@@ -9,7 +9,7 @@
 #import "SCStream.h"
 
 @implementation SCStream
-@synthesize particleCount, streamSize, pathIndex;
+@synthesize particleCount, streamSize, pathIndex, easingFactor;
 
 -(id) initWithPosition:(CGPoint) position {
     
@@ -17,24 +17,22 @@
     
     if (self) {
 
-        self.particleCount = 5;
+        particleCount = 1;
+        streamSize = 100;
+        easing = position;
+        headPosition = position;
+        easingFactor = 0.08;
+        active = YES;
 
         particleArray = [[NSMutableArray alloc] init];
         streamQueue   = [[NSMutableArray alloc] init];
         path          = [[NSMutableArray alloc] init];
-
 
         for (int i=0; i<self.particleCount; i++) {
             SCParticle *particle = [[SCParticle alloc] initWithPosition: position];
             [self addChild:particle];
             [particleArray addObject:particle];
         }
-
-        self.streamSize = 400;
-        easing = position;
-        headPosition = position;
-
-        active = YES;
 
         [self scheduleUpdate];
     }
@@ -43,41 +41,58 @@
 }
 
 -(void) update:(ccTime) deltaTime {
-    if ( [path count] > 0 ) {
-        id newPosition = [path objectAtIndex: pathIndex];
-        if ( [streamQueue count] < streamSize ) {
-            [streamQueue insertObject:newPosition atIndex:0];
-        }
+    @try {
+        if ( [path count] > 0 ) {
+            NSValue *value = [path objectAtIndex: pathIndex];
+            CGPoint pathPoint;
+            [value getValue:&pathPoint];
+            
+            easing = [self calculateEasingForPoint:pathPoint withPrevEasing:easing andEasingFactor:easingFactor];
+            
+            if ( [streamQueue count] < streamSize ) {
+                [streamQueue insertObject:[NSValue valueWithCGPoint:easing] atIndex:0];
+            } else {
+                [streamQueue insertObject:[NSValue valueWithCGPoint:easing] atIndex:0];
+                [streamQueue removeLastObject];
+            }
 
-        [self rotateStreamQueue];
-        pathIndex++;
-        if ( pathIndex >= [path count] ) {
-            pathIndex = 0;
+            pathIndex++;
+            if ( pathIndex >= [path count] ) {
+                pathIndex = 0;
+            }
         }
+    } @catch (NSException * exception) {
+        NSLog(@"Update exception: %@", exception);
     }
 }
 
 -(void) draw {
-
-    int i = 1;
-    int j = 0;
-    while ( i < [streamQueue count] ) {
-        SCParticle *particle = [particleArray objectAtIndex: j];
-        NSValue *value = [streamQueue objectAtIndex: i];
-        CGPoint pt;
-        [value getValue:&pt];
-        [particle position: CGPointMake(pt.x, pt.y)];
-        i += 40;
-        j += 1;
+    
+    @try {
+        int i = 0;
+        int j = 0;
+        int step = streamSize / particleCount;
+        while ( i < [streamQueue count] ) {
+            SCParticle *particle = [particleArray objectAtIndex: j];
+            NSValue *value = [streamQueue objectAtIndex: i];
+            CGPoint pt;
+            [value getValue:&pt];
+            [particle position: CGPointMake(pt.x, pt.y)];
+            i += step;
+            j += 1;
+        }
+    }
+    @catch (NSException *exception) {
+        NSLog(@"Drawing exception: %@", exception);
     }
 }
 
--(void) rotateStreamQueue {
-    for (int i = 1; i > 0; i--) {
-        NSObject* obj = [streamQueue lastObject];
-        [streamQueue insertObject:obj atIndex:0];
-        [streamQueue removeLastObject];
-    }
+-(CGPoint) calculateEasingForPoint:(CGPoint)point withPrevEasing:(CGPoint)prevEasing andEasingFactor:(float)factor {
+    float dx = point.x - prevEasing.x;
+    CGPoint newEasing = CGPointMake(prevEasing.x + (dx * factor), prevEasing.y);
+
+    float dy = point.y - newEasing.y;
+    return CGPointMake(newEasing.x, newEasing.y + (dy * factor));
 }
 
 -(void)onEnter
@@ -95,6 +110,7 @@
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
     if (active) {
         [path removeAllObjects];
+        pathIndex = 0;
         CGPoint position = [touch locationInView: [touch view]];
         position = [[CCDirector sharedDirector] convertToGL: position];
         [path addObject:[NSValue valueWithCGPoint:position]];

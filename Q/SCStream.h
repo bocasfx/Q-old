@@ -20,13 +20,14 @@
     int streamSize;
     int pathIndex;
     BOOL active;
+    float easingFactor;
 }
 
 @property int particleCount;
 @property int streamSize;
 @property int pathIndex;
+@property float easingFactor;
 
 -(id) initWithPosition:(CGPoint) position;
--(void) rotateStreamQueue;
 
 @end
