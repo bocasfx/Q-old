@@ -9,6 +9,9 @@
 /* Begin PBXBuildFile section */
 		E9297CDE17332D6500830D79 /* SCParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = E9297CDD17332D6500830D79 /* SCParticle.m */; };
 		E9297CE11733317400830D79 /* SCStream.m in Sources */ = {isa = PBXBuildFile; fileRef = E9297CE01733317400830D79 /* SCStream.m */; };
+		E9DECE5517355CE600F6FF8C /* ball1.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5217355CE600F6FF8C /* ball1.png */; };
+		E9DECE5617355CE600F6FF8C /* ball2.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5317355CE600F6FF8C /* ball2.png */; };
+		E9DECE5717355CE600F6FF8C /* ball3.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5417355CE600F6FF8C /* ball3.png */; };
 		E9E56A7717331E1B0004E7A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E56A7617331E1B0004E7A8 /* QuartzCore.framework */; };
 		E9E56A7917331E1B0004E7A8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E56A7817331E1B0004E7A8 /* OpenGLES.framework */; };
 		E9E56A7B17331E1B0004E7A8 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E56A7A17331E1B0004E7A8 /* OpenAL.framework */; };
@@ -143,6 +146,9 @@
 		E9297CDD17332D6500830D79 /* SCParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCParticle.m; sourceTree = "<group>"; };
 		E9297CDF1733317400830D79 /* SCStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCStream.h; sourceTree = "<group>"; };
 		E9297CE01733317400830D79 /* SCStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCStream.m; sourceTree = "<group>"; };
+		E9DECE5217355CE600F6FF8C /* ball1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball1.png; path = Resources/ball1.png; sourceTree = "<group>"; };
+		E9DECE5317355CE600F6FF8C /* ball2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball2.png; path = Resources/ball2.png; sourceTree = "<group>"; };
+		E9DECE5417355CE600F6FF8C /* ball3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball3.png; path = Resources/ball3.png; sourceTree = "<group>"; };
 		E9E56A7317331E1B0004E7A8 /* Q.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Q.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E56A7617331E1B0004E7A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E9E56A7817331E1B0004E7A8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -484,6 +490,9 @@
 		E9E56A8917331E1B0004E7A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E9DECE5217355CE600F6FF8C /* ball1.png */,
+				E9DECE5317355CE600F6FF8C /* ball2.png */,
+				E9DECE5417355CE600F6FF8C /* ball3.png */,
 				E9E56C0E17331E430004E7A8 /* ball0.png */,
 				E9E56A8A17331E1B0004E7A8 /* Default.png */,
 				E9E56A8C17331E1B0004E7A8 /* Default-Landscape~ipad.png */,
@@ -909,6 +918,9 @@
 				E9E56AA217331E1C0004E7A8 /* iTunesArtwork in Resources */,
 				E9E56BE017331E1F0004E7A8 /* ChangeLog in Resources */,
 				E9E56C0F17331E430004E7A8 /* ball0.png in Resources */,
+				E9DECE5517355CE600F6FF8C /* ball1.png in Resources */,
+				E9DECE5617355CE600F6FF8C /* ball2.png in Resources */,
+				E9DECE5717355CE600F6FF8C /* ball3.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

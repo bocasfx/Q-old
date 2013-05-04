@@ -21,13 +21,16 @@
     int pathIndex;
     BOOL active;
     float easingFactor;
+    BOOL touchDown;
 }
 
 @property int particleCount;
 @property int streamSize;
 @property int pathIndex;
+@property BOOL touchDown;
 @property float easingFactor;
 
 -(id) initWithPosition:(CGPoint) position;
+-(CGPoint) calculateEasingForPoint:(CGPoint)point withPrevEasing:(CGPoint)prevEasing andEasingFactor:(float)factor;
 
 @end

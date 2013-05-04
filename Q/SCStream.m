@@ -9,7 +9,7 @@
 #import "SCStream.h"
 
 @implementation SCStream
-@synthesize particleCount, streamSize, pathIndex, easingFactor;
+@synthesize particleCount, streamSize, pathIndex, easingFactor, touchDown;
 
 -(id) initWithPosition:(CGPoint) position {
     
@@ -23,13 +23,15 @@
         headPosition = position;
         easingFactor = 0.08;
         active = YES;
+        touchDown = NO;
 
         particleArray = [[NSMutableArray alloc] init];
         streamQueue   = [[NSMutableArray alloc] init];
         path          = [[NSMutableArray alloc] init];
 
         for (int i=0; i<self.particleCount; i++) {
-            SCParticle *particle = [[SCParticle alloc] initWithPosition: position];
+            id ball = [NSString stringWithFormat:@"ball%i.png", i];
+            SCParticle *particle = [[SCParticle alloc] initWithPosition: position andBall:ball];
             [self addChild:particle];
             [particleArray addObject:particle];
         }
@@ -42,24 +44,31 @@
 
 -(void) update:(ccTime) deltaTime {
     @try {
-        if ( [path count] > 0 ) {
-            NSValue *value = [path objectAtIndex: pathIndex];
-            CGPoint pathPoint;
-            [value getValue:&pathPoint];
-            
-            easing = [self calculateEasingForPoint:pathPoint withPrevEasing:easing andEasingFactor:easingFactor];
-            
-            if ( [streamQueue count] < streamSize ) {
-                [streamQueue insertObject:[NSValue valueWithCGPoint:easing] atIndex:0];
-            } else {
-                [streamQueue insertObject:[NSValue valueWithCGPoint:easing] atIndex:0];
-                [streamQueue removeLastObject];
+        
+        CGPoint pathPoint = headPosition;
+        
+        if (touchDown == YES) {
+            pathPoint = headPosition;
+            [path addObject:[NSValue valueWithCGPoint:headPosition]];
+        } else {
+            if ( [path count] > 0 ) {
+                NSValue *value = [path objectAtIndex: pathIndex];
+                [value getValue:&pathPoint];
             }
+        }
+        
+        easing = [self calculateEasingForPoint:pathPoint withPrevEasing:easing andEasingFactor:easingFactor];
+        
+        if ( [streamQueue count] < streamSize ) {
+            [streamQueue insertObject:[NSValue valueWithCGPoint:easing] atIndex:0];
+        } else {
+            [streamQueue insertObject:[NSValue valueWithCGPoint:easing] atIndex:0];
+            [streamQueue removeLastObject];
+        }
 
-            pathIndex++;
-            if ( pathIndex >= [path count] ) {
-                pathIndex = 0;
-            }
+        pathIndex++;
+        if ( pathIndex >= [path count] ) {
+            pathIndex = 0;
         }
     } @catch (NSException * exception) {
         NSLog(@"Update exception: %@", exception);
@@ -67,7 +76,6 @@
 }
 
 -(void) draw {
-    
     @try {
         int i = 0;
         int j = 0;
@@ -108,22 +116,21 @@
 }
 
 -(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    if (active) {
-        [path removeAllObjects];
-        pathIndex = 0;
-        CGPoint position = [touch locationInView: [touch view]];
-        position = [[CCDirector sharedDirector] convertToGL: position];
-        [path addObject:[NSValue valueWithCGPoint:position]];
-        return YES;
-    }
-
-    return NO;
+    if ( !active ) { return NO;}
+    touchDown = YES;
+    [path removeAllObjects];
+    pathIndex = 0;
+    headPosition = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
+    return YES;
 }
 
 -(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
     CGPoint position = [touch locationInView: [touch view]];
-    position = [[CCDirector sharedDirector] convertToGL: position];
-    [path addObject:[NSValue valueWithCGPoint:position]];
+    headPosition = [[CCDirector sharedDirector] convertToGL: position];
+}
+
+-(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+    touchDown = NO;
 }
 
 -(void) dealloc {
