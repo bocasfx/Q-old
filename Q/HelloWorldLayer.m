@@ -41,10 +41,34 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
         self.isTouchEnabled = YES;
-        SCStream *stream = [[SCStream alloc] initWithPosition:CGPointMake(200, 200)];
-        [self addChild:stream];
 	}
 	return self;
+}
+
+-(void) registerWithTouchDispatcher {
+	[[[CCDirector sharedDirector] touchDispatcher] addStandardDelegate:self priority:0];
+}
+
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    //NSLog(@"Main layer: Touches began.");
+    UITouch *touch = [touches anyObject];
+    CGPoint position = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
+    SCStream *stream = [[SCStream alloc] initWithPosition:position];
+    [stream setActiveStatus:YES];
+    [stream setIgnoreTouch:NO];
+    [stream ccTouchesBegan:touches withEvent:event];
+    [self addChild:stream z:0 tag:streamTag];
+    streamTag++;
+}
+
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    //NSLog(@"Main layer: Touches ended.");
+    
+    // TODO: Replace with event.
+    for (int i=0; i<streamTag; i++) {
+        SCStream *stream = (SCStream *)[self getChildByTag:i];
+        [stream setIgnoreTouch:YES];
+    }
 }
 
 // on "dealloc" you need to release all your retained objects

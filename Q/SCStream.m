@@ -9,7 +9,6 @@
 #import "SCStream.h"
 
 @implementation SCStream
-@synthesize particleCount, streamSize, pathIndex, easingFactor, touchDown;
 
 -(id) initWithPosition:(CGPoint) position {
     
@@ -24,12 +23,13 @@
         easingFactor = 0.08;
         active = YES;
         touchDown = NO;
+        ignoreTouch = NO;
 
         particleArray = [[NSMutableArray alloc] init];
         streamQueue   = [[NSMutableArray alloc] init];
         path          = [[NSMutableArray alloc] init];
 
-        for (int i=0; i<self.particleCount; i++) {
+        for (int i=0; i<particleCount; i++) {
             id ball = [NSString stringWithFormat:@"ball%i.png", i];
             SCParticle *particle = [[SCParticle alloc] initWithPosition: position andBall:ball];
             [self addChild:particle];
@@ -105,8 +105,8 @@
 
 -(void)onEnter
 {
-    [[[CCDirector sharedDirector] touchDispatcher] addTargetedDelegate:self priority:0 swallowsTouches:YES];
-    [super onEnter];
+    [[[CCDirector sharedDirector] touchDispatcher] addStandardDelegate:self priority:0];
+	[super onEnter];
 }
 
 -(void)onExit
@@ -115,27 +115,38 @@
     [super onExit];
 }
 
--(BOOL)ccTouchBegan:(UITouch *)touch withEvent:(UIEvent *)event {
-    if ( !active ) { return NO;}
+- (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
+    //NSLog(@"SCStream: Touces began.");
+    if ( ignoreTouch ) return;
     touchDown = YES;
     [path removeAllObjects];
     pathIndex = 0;
+    UITouch *touch = [touches anyObject];
     headPosition = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
-    return YES;
 }
 
--(void)ccTouchMoved:(UITouch *)touch withEvent:(UIEvent *)event {
-    CGPoint position = [touch locationInView: [touch view]];
-    headPosition = [[CCDirector sharedDirector] convertToGL: position];
+- (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
+    //NSLog(@"SCStream: Touches moved.");
+    UITouch *touch = [touches anyObject];
+    headPosition = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
 }
 
--(void)ccTouchEnded:(UITouch *)touch withEvent:(UIEvent *)event {
+- (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
+    //NSLog(@"SCStream: Touces ended.");
     touchDown = NO;
+}
+
+-(void) setActiveStatus:(BOOL) activate {
+    active = activate;
+}
+
+-(void) setIgnoreTouch:(BOOL) ignore {
+    ignoreTouch = ignore;
 }
 
 -(void) dealloc {
     // Dealloc particles
-    for (int i=0; i<self.particleCount; i++) {
+    for (int i=0; i<particleCount; i++) {
         id particle = [particleArray objectAtIndex: i];
         [particle dealloc];
     }

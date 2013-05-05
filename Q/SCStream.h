@@ -10,7 +10,7 @@
 #import "SCParticle.h"
 #import "CCTouchDispatcher.h"
 
-@interface SCStream : CCNode <CCTargetedTouchDelegate> {
+@interface SCStream : CCNode <CCStandardTouchDelegate> {
     NSMutableArray *particleArray;
     NSMutableArray *path;
     NSMutableArray *streamQueue;
@@ -22,15 +22,12 @@
     BOOL active;
     float easingFactor;
     BOOL touchDown;
+    BOOL ignoreTouch;
 }
-
-@property int particleCount;
-@property int streamSize;
-@property int pathIndex;
-@property BOOL touchDown;
-@property float easingFactor;
 
 -(id) initWithPosition:(CGPoint) position;
 -(CGPoint) calculateEasingForPoint:(CGPoint)point withPrevEasing:(CGPoint)prevEasing andEasingFactor:(float)factor;
+-(void) setActiveStatus:(BOOL) activate;
+-(void) setIgnoreTouch:(BOOL) ignore;
 
 @end
