@@ -1,5 +1,5 @@
 //
-//  HelloWorldLayer.h
+//  MainLayer.h
 //  Q
 //
 //  Created by Bocas on 13-05-02.
@@ -11,13 +11,13 @@
 #import "SCStream.h"
 #import "CCTouchDispatcher.h"
 
-// HelloWorldLayer
-@interface HelloWorldLayer : CCLayer <CCStandardTouchDelegate>
+// MainLayer.h
+@interface MainLayer : CCLayer <CCStandardTouchDelegate>
 {
     int streamTag;
 }
 
-// returns a CCScene that contains the HelloWorldLayer as the only child
+// returns a CCScene that contains the MainLayer as the only child
 +(CCScene *) scene;
 
 @end

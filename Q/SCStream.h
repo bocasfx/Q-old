@@ -28,6 +28,7 @@
 -(id) initWithPosition:(CGPoint) position;
 -(CGPoint) calculateEasingForPoint:(CGPoint)point withPrevEasing:(CGPoint)prevEasing andEasingFactor:(float)factor;
 -(void) setActiveStatus:(BOOL) activate;
--(void) setIgnoreTouch:(BOOL) ignore;
+-(void) ignoreTouch;
+-(void) acknowledgeTouch;
 
 @end

@@ -136,7 +136,7 @@
 		E9E56BFA17331E200004E7A8 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF917331E200004E7A8 /* vec4.c */; };
 		E9E56BFF17331E200004E7A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BFE17331E200004E7A8 /* main.m */; };
 		E9E56C0217331E200004E7A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56C0117331E200004E7A8 /* AppDelegate.m */; };
-		E9E56C0517331E200004E7A8 /* HelloWorldLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56C0417331E200004E7A8 /* HelloWorldLayer.m */; };
+		E9E56C0517331E200004E7A8 /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56C0417331E200004E7A8 /* MainLayer.m */; };
 		E9E56C0817331E200004E7A8 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56C0717331E200004E7A8 /* IntroLayer.m */; };
 		E9E56C0F17331E430004E7A8 /* ball0.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E56C0E17331E430004E7A8 /* ball0.png */; };
 /* End PBXBuildFile section */
@@ -407,8 +407,8 @@
 		E9E56BFE17331E200004E7A8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		E9E56C0017331E200004E7A8 /* AppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		E9E56C0117331E200004E7A8 /* AppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
-		E9E56C0317331E200004E7A8 /* HelloWorldLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = HelloWorldLayer.h; sourceTree = "<group>"; };
-		E9E56C0417331E200004E7A8 /* HelloWorldLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = HelloWorldLayer.m; sourceTree = "<group>"; };
+		E9E56C0317331E200004E7A8 /* MainLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = MainLayer.h; sourceTree = "<group>"; };
+		E9E56C0417331E200004E7A8 /* MainLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = MainLayer.m; sourceTree = "<group>"; };
 		E9E56C0617331E200004E7A8 /* IntroLayer.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = IntroLayer.h; sourceTree = "<group>"; };
 		E9E56C0717331E200004E7A8 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		E9E56C0E17331E430004E7A8 /* ball0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball0.png; path = Resources/ball0.png; sourceTree = "<group>"; };
@@ -472,8 +472,8 @@
 			children = (
 				E9E56C0017331E200004E7A8 /* AppDelegate.h */,
 				E9E56C0117331E200004E7A8 /* AppDelegate.m */,
-				E9E56C0317331E200004E7A8 /* HelloWorldLayer.h */,
-				E9E56C0417331E200004E7A8 /* HelloWorldLayer.m */,
+				E9E56C0317331E200004E7A8 /* MainLayer.h */,
+				E9E56C0417331E200004E7A8 /* MainLayer.m */,
 				E9297CDF1733317400830D79 /* SCStream.h */,
 				E9297CE01733317400830D79 /* SCStream.m */,
 				E9297CDC17332D6500830D79 /* SCParticle.h */,
@@ -1033,7 +1033,7 @@
 				E9E56BFA17331E200004E7A8 /* vec4.c in Sources */,
 				E9E56BFF17331E200004E7A8 /* main.m in Sources */,
 				E9E56C0217331E200004E7A8 /* AppDelegate.m in Sources */,
-				E9E56C0517331E200004E7A8 /* HelloWorldLayer.m in Sources */,
+				E9E56C0517331E200004E7A8 /* MainLayer.m in Sources */,
 				E9E56C0817331E200004E7A8 /* IntroLayer.m in Sources */,
 				E9297CDE17332D6500830D79 /* SCParticle.m in Sources */,
 				E9297CE11733317400830D79 /* SCStream.m in Sources */,

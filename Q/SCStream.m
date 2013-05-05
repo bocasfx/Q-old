@@ -140,8 +140,12 @@
     active = activate;
 }
 
--(void) setIgnoreTouch:(BOOL) ignore {
-    ignoreTouch = ignore;
+-(void) ignoreTouch {
+    ignoreTouch = YES;
+}
+
+-(void) acknowledgeTouch {
+    ignoreTouch = NO;
 }
 
 -(void) dealloc {

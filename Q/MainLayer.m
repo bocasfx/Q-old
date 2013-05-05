@@ -1,5 +1,5 @@
 //
-//  HelloWorldLayer.m
+//  MainLayer.m
 //  Q
 //
 //  Created by Bocas on 13-05-02.
@@ -8,24 +8,24 @@
 
 
 // Import the interfaces
-#import "HelloWorldLayer.h"
+#import "MainLayer.h"
 
 // Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
 
-#pragma mark - HelloWorldLayer
+#pragma mark - MainLayer
 
-// HelloWorldLayer implementation
-@implementation HelloWorldLayer
+// MainLayer implementation
+@implementation MainLayer
 
-// Helper class method that creates a Scene with the HelloWorldLayer as the only child.
+// Helper class method that creates a Scene with the MainLayer as the only child.
 +(CCScene *) scene
 {
 	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
 	
 	// 'layer' is an autorelease object.
-	HelloWorldLayer *layer = [HelloWorldLayer node];
+	MainLayer *layer = [MainLayer node];
 	
 	// add layer as a child to scene
 	[scene addChild: layer];
@@ -55,7 +55,7 @@
     CGPoint position = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
     SCStream *stream = [[SCStream alloc] initWithPosition:position];
     [stream setActiveStatus:YES];
-    [stream setIgnoreTouch:NO];
+    [stream acknowledgeTouch];
     [stream ccTouchesBegan:touches withEvent:event];
     [self addChild:stream z:0 tag:streamTag];
     streamTag++;
@@ -63,12 +63,7 @@
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     //NSLog(@"Main layer: Touches ended.");
-    
-    // TODO: Replace with event.
-    for (int i=0; i<streamTag; i++) {
-        SCStream *stream = (SCStream *)[self getChildByTag:i];
-        [stream setIgnoreTouch:YES];
-    }
+    [[self children] makeObjectsPerformSelector:@selector(ignoreTouch)];
 }
 
 // on "dealloc" you need to release all your retained objects
