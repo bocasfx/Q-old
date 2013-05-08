@@ -11,10 +11,14 @@
 #import "SCStream.h"
 #import "SCNode.h"
 #import "CCTouchDispatcher.h"
+#import <UIKit/UIKit.h>
+#import "CCUIViewWrapper.h"
 
 // MainLayer.h
 @interface MainLayer : CCLayer <CCStandardTouchDelegate>
 {
+    UIButton *button;
+    CCUIViewWrapper *buttonWrapper;
 }
 
 // returns a CCScene that contains the MainLayer as the only child

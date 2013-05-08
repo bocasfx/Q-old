@@ -41,8 +41,22 @@
 	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
         self.isTouchEnabled = YES;
+        [self addButton];
 	}
+
 	return self;
+}
+
+-(void)addButton
+{
+    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    [button addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchDown];
+    buttonWrapper = [CCUIViewWrapper wrapperForUIView:button];
+    [self addChild:buttonWrapper];
+}
+
+-(void)buttonTapped {
+    NSLog(@"Button tapped");
 }
 
 -(void) registerWithTouchDispatcher {
