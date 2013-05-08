@@ -49,8 +49,11 @@
 
 -(void)addButton
 {
-    button = [UIButton buttonWithType:UIButtonTypeRoundedRect];
+    button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:@selector(buttonTapped) forControlEvents:UIControlEventTouchDown];
+    button.frame = CGRectMake( 20, 20, 92, 92 );
+    UIImage *btnImage = [UIImage imageNamed:@"icon-72.png"];
+    [button setImage:btnImage forState:UIControlStateNormal];
     buttonWrapper = [CCUIViewWrapper wrapperForUIView:button];
     [self addChild:buttonWrapper];
 }

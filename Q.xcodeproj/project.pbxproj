@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E90B3EF8173B026B00CFF4CD /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E90B3EF7173B026B00CFF4CD /* CCUIViewWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E9297CDE17332D6500830D79 /* SCParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = E9297CDD17332D6500830D79 /* SCParticle.m */; };
 		E9297CE11733317400830D79 /* SCStream.m in Sources */ = {isa = PBXBuildFile; fileRef = E9297CE01733317400830D79 /* SCStream.m */; };
 		E9DECE5517355CE600F6FF8C /* ball1.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5217355CE600F6FF8C /* ball1.png */; };
@@ -146,6 +147,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		E90B3EF6173B026B00CFF4CD /* CCUIViewWrapper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CCUIViewWrapper.h; sourceTree = "<group>"; };
+		E90B3EF7173B026B00CFF4CD /* CCUIViewWrapper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CCUIViewWrapper.m; sourceTree = "<group>"; };
 		E9297CDC17332D6500830D79 /* SCParticle.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCParticle.h; sourceTree = "<group>"; };
 		E9297CDD17332D6500830D79 /* SCParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCParticle.m; sourceTree = "<group>"; };
 		E9297CDF1733317400830D79 /* SCStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCStream.h; sourceTree = "<group>"; };
@@ -491,6 +494,8 @@
 				E9297CDD17332D6500830D79 /* SCParticle.m */,
 				E9E56C0617331E200004E7A8 /* IntroLayer.h */,
 				E9E56C0717331E200004E7A8 /* IntroLayer.m */,
+				E90B3EF6173B026B00CFF4CD /* CCUIViewWrapper.h */,
+				E90B3EF7173B026B00CFF4CD /* CCUIViewWrapper.m */,
 				E9E56A8917331E1B0004E7A8 /* Resources */,
 				E9E56AA317331E1C0004E7A8 /* libs */,
 				E9E56BFC17331E200004E7A8 /* Supporting Files */,
@@ -1055,6 +1060,7 @@
 				E9297CDE17332D6500830D79 /* SCParticle.m in Sources */,
 				E9297CE11733317400830D79 /* SCStream.m in Sources */,
 				E9E0B5E51739E18900751902 /* SCNode.m in Sources */,
+				E90B3EF8173B026B00CFF4CD /* CCUIViewWrapper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
