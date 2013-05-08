@@ -9,6 +9,18 @@
 #import "SCStream.h"
 
 @implementation SCStream
+@synthesize easing,
+            headPosition,
+            particleCount,
+            streamSize,
+            pathIndex,
+            active,
+            easingFactor,
+            ignoreTouch,
+            touchDown,
+            particleArray,
+            streamQueue,
+            path;
 
 -(id) initWithPosition:(CGPoint) position {
     
@@ -136,29 +148,16 @@
     touchDown = NO;
 }
 
--(void) setActiveStatus:(BOOL) activate {
-    active = activate;
+-(void) active:(BOOL) value {
+    active = value;
 }
 
--(void) ignoreTouch {
+-(void) ignoreTouch:(BOOL) value {
+    ignoreTouch = value;
+}
+
+-(void) ignoreTouches {
     ignoreTouch = YES;
 }
 
--(void) acknowledgeTouch {
-    ignoreTouch = NO;
-}
-
--(void) dealloc {
-    // Dealloc particles
-    for (int i=0; i<particleCount; i++) {
-        id particle = [particleArray objectAtIndex: i];
-        [particle dealloc];
-    }
-
-    [particleArray dealloc];
-    [streamQueue dealloc];
-    [path dealloc];
-
-    [super dealloc];
-}
 @end

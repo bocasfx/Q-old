@@ -10,13 +10,14 @@
 #import "cocos2d.h"
 
 @interface SCParticle : CCNode {
-    CCSprite * sprite;
 }
+
+@property (nonatomic, assign) CGPoint position;
+@property (nonatomic, strong) CCSprite *sprite;
 
 -(id) initWithPosition:(CGPoint) particlePosition;
 -(id) initWithPosition:(CGPoint) particlePosition andBall:(NSString *) ballName;
 -(void)position:(CGPoint) pos;
 -(CGPoint)position;
--(void)dealloc;
 
 @end

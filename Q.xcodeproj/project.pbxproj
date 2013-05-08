@@ -12,6 +12,10 @@
 		E9DECE5517355CE600F6FF8C /* ball1.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5217355CE600F6FF8C /* ball1.png */; };
 		E9DECE5617355CE600F6FF8C /* ball2.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5317355CE600F6FF8C /* ball2.png */; };
 		E9DECE5717355CE600F6FF8C /* ball3.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5417355CE600F6FF8C /* ball3.png */; };
+		E9E0B5E51739E18900751902 /* SCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E0B5E41739E18900751902 /* SCNode.m */; };
+		E9E0B5E91739E56100751902 /* active_node.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E0B5E61739E56100751902 /* active_node.png */; };
+		E9E0B5EA1739E56100751902 /* muted_node.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E0B5E71739E56100751902 /* muted_node.png */; };
+		E9E0B5EB1739E56100751902 /* node.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E0B5E81739E56100751902 /* node.png */; };
 		E9E56A7717331E1B0004E7A8 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E56A7617331E1B0004E7A8 /* QuartzCore.framework */; };
 		E9E56A7917331E1B0004E7A8 /* OpenGLES.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E56A7817331E1B0004E7A8 /* OpenGLES.framework */; };
 		E9E56A7B17331E1B0004E7A8 /* OpenAL.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E9E56A7A17331E1B0004E7A8 /* OpenAL.framework */; };
@@ -33,107 +37,107 @@
 		E9E56A9D17331E1C0004E7A8 /* Icon.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E56A9C17331E1C0004E7A8 /* Icon.png */; };
 		E9E56A9F17331E1C0004E7A8 /* Icon@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E56A9E17331E1C0004E7A8 /* Icon@2x.png */; };
 		E9E56AA217331E1C0004E7A8 /* iTunesArtwork in Resources */ = {isa = PBXBuildFile; fileRef = E9E56AA117331E1C0004E7A8 /* iTunesArtwork */; };
-		E9E56AA717331E1C0004E7A8 /* CCAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AA617331E1C0004E7A8 /* CCAction.m */; };
-		E9E56AAA17331E1C0004E7A8 /* CCActionCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AA917331E1C0004E7A8 /* CCActionCamera.m */; };
-		E9E56AAD17331E1C0004E7A8 /* CCActionCatmullRom.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AAC17331E1C0004E7A8 /* CCActionCatmullRom.m */; };
-		E9E56AB017331E1C0004E7A8 /* CCActionEase.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AAF17331E1C0004E7A8 /* CCActionEase.m */; };
-		E9E56AB317331E1C0004E7A8 /* CCActionGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AB217331E1C0004E7A8 /* CCActionGrid.m */; };
-		E9E56AB617331E1C0004E7A8 /* CCActionGrid3D.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AB517331E1C0004E7A8 /* CCActionGrid3D.m */; };
-		E9E56AB917331E1C0004E7A8 /* CCActionInstant.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AB817331E1C0004E7A8 /* CCActionInstant.m */; };
-		E9E56ABC17331E1C0004E7A8 /* CCActionInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ABB17331E1C0004E7A8 /* CCActionInterval.m */; };
-		E9E56ABF17331E1C0004E7A8 /* CCActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ABE17331E1C0004E7A8 /* CCActionManager.m */; };
-		E9E56AC217331E1C0004E7A8 /* CCActionPageTurn3D.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AC117331E1C0004E7A8 /* CCActionPageTurn3D.m */; };
-		E9E56AC517331E1C0004E7A8 /* CCActionProgressTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AC417331E1C0004E7A8 /* CCActionProgressTimer.m */; };
-		E9E56AC817331E1C0004E7A8 /* CCActionTiledGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AC717331E1C0004E7A8 /* CCActionTiledGrid.m */; };
-		E9E56ACB17331E1C0004E7A8 /* CCActionTween.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ACA17331E1C0004E7A8 /* CCActionTween.m */; };
-		E9E56ACE17331E1C0004E7A8 /* CCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ACD17331E1C0004E7A8 /* CCAnimation.m */; };
-		E9E56AD117331E1C0004E7A8 /* CCAnimationCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AD017331E1C0004E7A8 /* CCAnimationCache.m */; };
-		E9E56AD417331E1C0004E7A8 /* CCAtlasNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AD317331E1C0004E7A8 /* CCAtlasNode.m */; };
-		E9E56AD717331E1C0004E7A8 /* CCCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AD617331E1C0004E7A8 /* CCCamera.m */; };
-		E9E56ADB17331E1C0004E7A8 /* CCConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ADA17331E1C0004E7A8 /* CCConfiguration.m */; };
-		E9E56ADE17331E1C0004E7A8 /* ccDeprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ADD17331E1C0004E7A8 /* ccDeprecated.m */; };
-		E9E56AE117331E1D0004E7A8 /* CCDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AE017331E1D0004E7A8 /* CCDirector.m */; };
-		E9E56AE417331E1D0004E7A8 /* CCDrawingPrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AE317331E1D0004E7A8 /* CCDrawingPrimitives.m */; };
-		E9E56AE717331E1D0004E7A8 /* CCGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AE617331E1D0004E7A8 /* CCGLProgram.m */; };
-		E9E56AEA17331E1D0004E7A8 /* ccGLStateCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AE917331E1D0004E7A8 /* ccGLStateCache.m */; };
-		E9E56AED17331E1D0004E7A8 /* CCGrabber.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AEC17331E1D0004E7A8 /* CCGrabber.m */; };
-		E9E56AF017331E1D0004E7A8 /* CCGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AEF17331E1D0004E7A8 /* CCGrid.m */; };
-		E9E56AF317331E1D0004E7A8 /* CCLabelAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AF217331E1D0004E7A8 /* CCLabelAtlas.m */; };
-		E9E56AF617331E1D0004E7A8 /* CCLabelBMFont.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AF517331E1D0004E7A8 /* CCLabelBMFont.m */; };
-		E9E56AF917331E1D0004E7A8 /* CCLabelTTF.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AF817331E1D0004E7A8 /* CCLabelTTF.m */; };
-		E9E56AFC17331E1D0004E7A8 /* CCLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AFB17331E1D0004E7A8 /* CCLayer.m */; };
-		E9E56B0017331E1D0004E7A8 /* CCMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AFF17331E1D0004E7A8 /* CCMenu.m */; };
-		E9E56B0317331E1D0004E7A8 /* CCMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0217331E1D0004E7A8 /* CCMenuItem.m */; };
-		E9E56B0617331E1D0004E7A8 /* CCMotionStreak.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0517331E1D0004E7A8 /* CCMotionStreak.m */; };
-		E9E56B0917331E1D0004E7A8 /* CCNode+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0817331E1D0004E7A8 /* CCNode+Debug.m */; };
-		E9E56B0C17331E1D0004E7A8 /* CCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0B17331E1D0004E7A8 /* CCNode.m */; };
-		E9E56B0F17331E1D0004E7A8 /* CCParallaxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0E17331E1D0004E7A8 /* CCParallaxNode.m */; };
-		E9E56B1217331E1D0004E7A8 /* CCParticleBatchNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1117331E1D0004E7A8 /* CCParticleBatchNode.m */; };
-		E9E56B1517331E1D0004E7A8 /* CCParticleExamples.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1417331E1D0004E7A8 /* CCParticleExamples.m */; };
-		E9E56B1817331E1D0004E7A8 /* CCParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1717331E1D0004E7A8 /* CCParticleSystem.m */; };
-		E9E56B1B17331E1D0004E7A8 /* CCParticleSystemQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1A17331E1D0004E7A8 /* CCParticleSystemQuad.m */; };
-		E9E56B1E17331E1D0004E7A8 /* CCProgressTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1D17331E1D0004E7A8 /* CCProgressTimer.m */; };
-		E9E56B2217331E1D0004E7A8 /* CCRenderTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B2117331E1D0004E7A8 /* CCRenderTexture.m */; };
-		E9E56B2517331E1D0004E7A8 /* CCScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B2417331E1D0004E7A8 /* CCScene.m */; };
-		E9E56B2817331E1D0004E7A8 /* CCScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B2717331E1D0004E7A8 /* CCScheduler.m */; };
-		E9E56B3817331E1D0004E7A8 /* CCShaderCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B3717331E1D0004E7A8 /* CCShaderCache.m */; };
-		E9E56B3B17331E1E0004E7A8 /* ccShaders.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B3A17331E1E0004E7A8 /* ccShaders.m */; };
-		E9E56B3E17331E1E0004E7A8 /* CCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B3D17331E1E0004E7A8 /* CCSprite.m */; };
-		E9E56B4117331E1E0004E7A8 /* CCSpriteBatchNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4017331E1E0004E7A8 /* CCSpriteBatchNode.m */; };
-		E9E56B4417331E1E0004E7A8 /* CCSpriteFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4317331E1E0004E7A8 /* CCSpriteFrame.m */; };
-		E9E56B4717331E1E0004E7A8 /* CCSpriteFrameCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4617331E1E0004E7A8 /* CCSpriteFrameCache.m */; };
-		E9E56B4A17331E1E0004E7A8 /* CCTexture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4917331E1E0004E7A8 /* CCTexture2D.m */; };
-		E9E56B4D17331E1E0004E7A8 /* CCTextureAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4C17331E1E0004E7A8 /* CCTextureAtlas.m */; };
-		E9E56B5017331E1E0004E7A8 /* CCTextureCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4F17331E1E0004E7A8 /* CCTextureCache.m */; };
-		E9E56B5317331E1E0004E7A8 /* CCTexturePVR.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5217331E1E0004E7A8 /* CCTexturePVR.m */; };
-		E9E56B5617331E1E0004E7A8 /* CCTileMapAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5517331E1E0004E7A8 /* CCTileMapAtlas.m */; };
-		E9E56B5917331E1E0004E7A8 /* CCTMXLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5817331E1E0004E7A8 /* CCTMXLayer.m */; };
-		E9E56B5C17331E1E0004E7A8 /* CCTMXObjectGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5B17331E1E0004E7A8 /* CCTMXObjectGroup.m */; };
-		E9E56B5F17331E1E0004E7A8 /* CCTMXTiledMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5E17331E1E0004E7A8 /* CCTMXTiledMap.m */; };
-		E9E56B6217331E1E0004E7A8 /* CCTMXXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6117331E1E0004E7A8 /* CCTMXXMLParser.m */; };
-		E9E56B6517331E1E0004E7A8 /* CCTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6417331E1E0004E7A8 /* CCTransition.m */; };
-		E9E56B6817331E1E0004E7A8 /* CCTransitionPageTurn.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6717331E1E0004E7A8 /* CCTransitionPageTurn.m */; };
-		E9E56B6B17331E1E0004E7A8 /* CCTransitionProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6A17331E1E0004E7A8 /* CCTransitionProgress.m */; };
-		E9E56B6F17331E1E0004E7A8 /* cocos2d.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6E17331E1E0004E7A8 /* cocos2d.m */; };
-		E9E56B7617331E1E0004E7A8 /* CCDirectorIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B7517331E1E0004E7A8 /* CCDirectorIOS.m */; };
-		E9E56B7917331E1E0004E7A8 /* CCES2Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B7817331E1E0004E7A8 /* CCES2Renderer.m */; };
-		E9E56B7D17331E1E0004E7A8 /* CCGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B7C17331E1E0004E7A8 /* CCGLView.m */; };
-		E9E56B8117331E1E0004E7A8 /* CCTouchDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8017331E1E0004E7A8 /* CCTouchDispatcher.m */; };
-		E9E56B8417331E1E0004E7A8 /* CCTouchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8317331E1E0004E7A8 /* CCTouchHandler.m */; };
-		E9E56B8817331E1E0004E7A8 /* CCDirectorMac.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8717331E1E0004E7A8 /* CCDirectorMac.m */; };
-		E9E56B8B17331E1E0004E7A8 /* CCEventDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8A17331E1E0004E7A8 /* CCEventDispatcher.m */; };
-		E9E56B8E17331E1E0004E7A8 /* CCGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8D17331E1E0004E7A8 /* CCGLView.m */; };
-		E9E56B9117331E1E0004E7A8 /* CCWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9017331E1E0004E7A8 /* CCWindow.m */; };
-		E9E56B9417331E1E0004E7A8 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9317331E1E0004E7A8 /* base64.c */; };
-		E9E56B9817331E1F0004E7A8 /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9717331E1F0004E7A8 /* CCArray.m */; };
-		E9E56B9B17331E1F0004E7A8 /* ccCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9A17331E1F0004E7A8 /* ccCArray.m */; };
-		E9E56B9E17331E1F0004E7A8 /* CCFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9D17331E1F0004E7A8 /* CCFileUtils.m */; };
-		E9E56BA117331E1F0004E7A8 /* CCProfiling.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BA017331E1F0004E7A8 /* CCProfiling.m */; };
-		E9E56BA317331E1F0004E7A8 /* ccUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BA217331E1F0004E7A8 /* ccUtils.c */; };
-		E9E56BA717331E1F0004E7A8 /* CCVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BA617331E1F0004E7A8 /* CCVertex.m */; };
-		E9E56BAA17331E1F0004E7A8 /* CGPointExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BA917331E1F0004E7A8 /* CGPointExtension.m */; };
-		E9E56BAD17331E1F0004E7A8 /* NSThread+performBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BAC17331E1F0004E7A8 /* NSThread+performBlock.m */; };
-		E9E56BB117331E1F0004E7A8 /* TGAlib.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BB017331E1F0004E7A8 /* TGAlib.m */; };
-		E9E56BB417331E1F0004E7A8 /* TransformUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BB317331E1F0004E7A8 /* TransformUtils.m */; };
-		E9E56BB917331E1F0004E7A8 /* ZipUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BB817331E1F0004E7A8 /* ZipUtils.m */; };
-		E9E56BBE17331E1F0004E7A8 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BBD17331E1F0004E7A8 /* CDAudioManager.m */; };
-		E9E56BC217331E1F0004E7A8 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BC117331E1F0004E7A8 /* CDOpenALSupport.m */; };
-		E9E56BC517331E1F0004E7A8 /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BC417331E1F0004E7A8 /* CocosDenshion.m */; };
-		E9E56BC817331E1F0004E7A8 /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BC717331E1F0004E7A8 /* SimpleAudioEngine.m */; };
-		E9E56BDE17331E1F0004E7A8 /* aabb.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BDD17331E1F0004E7A8 /* aabb.c */; };
+		E9E56AA717331E1C0004E7A8 /* CCAction.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AA617331E1C0004E7A8 /* CCAction.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AAA17331E1C0004E7A8 /* CCActionCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AA917331E1C0004E7A8 /* CCActionCamera.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AAD17331E1C0004E7A8 /* CCActionCatmullRom.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AAC17331E1C0004E7A8 /* CCActionCatmullRom.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AB017331E1C0004E7A8 /* CCActionEase.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AAF17331E1C0004E7A8 /* CCActionEase.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AB317331E1C0004E7A8 /* CCActionGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AB217331E1C0004E7A8 /* CCActionGrid.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AB617331E1C0004E7A8 /* CCActionGrid3D.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AB517331E1C0004E7A8 /* CCActionGrid3D.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AB917331E1C0004E7A8 /* CCActionInstant.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AB817331E1C0004E7A8 /* CCActionInstant.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56ABC17331E1C0004E7A8 /* CCActionInterval.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ABB17331E1C0004E7A8 /* CCActionInterval.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56ABF17331E1C0004E7A8 /* CCActionManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ABE17331E1C0004E7A8 /* CCActionManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AC217331E1C0004E7A8 /* CCActionPageTurn3D.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AC117331E1C0004E7A8 /* CCActionPageTurn3D.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AC517331E1C0004E7A8 /* CCActionProgressTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AC417331E1C0004E7A8 /* CCActionProgressTimer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AC817331E1C0004E7A8 /* CCActionTiledGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AC717331E1C0004E7A8 /* CCActionTiledGrid.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56ACB17331E1C0004E7A8 /* CCActionTween.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ACA17331E1C0004E7A8 /* CCActionTween.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56ACE17331E1C0004E7A8 /* CCAnimation.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ACD17331E1C0004E7A8 /* CCAnimation.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AD117331E1C0004E7A8 /* CCAnimationCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AD017331E1C0004E7A8 /* CCAnimationCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AD417331E1C0004E7A8 /* CCAtlasNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AD317331E1C0004E7A8 /* CCAtlasNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AD717331E1C0004E7A8 /* CCCamera.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AD617331E1C0004E7A8 /* CCCamera.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56ADB17331E1C0004E7A8 /* CCConfiguration.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ADA17331E1C0004E7A8 /* CCConfiguration.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56ADE17331E1C0004E7A8 /* ccDeprecated.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56ADD17331E1C0004E7A8 /* ccDeprecated.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AE117331E1D0004E7A8 /* CCDirector.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AE017331E1D0004E7A8 /* CCDirector.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AE417331E1D0004E7A8 /* CCDrawingPrimitives.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AE317331E1D0004E7A8 /* CCDrawingPrimitives.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AE717331E1D0004E7A8 /* CCGLProgram.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AE617331E1D0004E7A8 /* CCGLProgram.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AEA17331E1D0004E7A8 /* ccGLStateCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AE917331E1D0004E7A8 /* ccGLStateCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AED17331E1D0004E7A8 /* CCGrabber.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AEC17331E1D0004E7A8 /* CCGrabber.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AF017331E1D0004E7A8 /* CCGrid.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AEF17331E1D0004E7A8 /* CCGrid.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AF317331E1D0004E7A8 /* CCLabelAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AF217331E1D0004E7A8 /* CCLabelAtlas.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AF617331E1D0004E7A8 /* CCLabelBMFont.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AF517331E1D0004E7A8 /* CCLabelBMFont.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AF917331E1D0004E7A8 /* CCLabelTTF.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AF817331E1D0004E7A8 /* CCLabelTTF.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56AFC17331E1D0004E7A8 /* CCLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AFB17331E1D0004E7A8 /* CCLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B0017331E1D0004E7A8 /* CCMenu.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56AFF17331E1D0004E7A8 /* CCMenu.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B0317331E1D0004E7A8 /* CCMenuItem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0217331E1D0004E7A8 /* CCMenuItem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B0617331E1D0004E7A8 /* CCMotionStreak.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0517331E1D0004E7A8 /* CCMotionStreak.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B0917331E1D0004E7A8 /* CCNode+Debug.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0817331E1D0004E7A8 /* CCNode+Debug.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B0C17331E1D0004E7A8 /* CCNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0B17331E1D0004E7A8 /* CCNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B0F17331E1D0004E7A8 /* CCParallaxNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B0E17331E1D0004E7A8 /* CCParallaxNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B1217331E1D0004E7A8 /* CCParticleBatchNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1117331E1D0004E7A8 /* CCParticleBatchNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B1517331E1D0004E7A8 /* CCParticleExamples.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1417331E1D0004E7A8 /* CCParticleExamples.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B1817331E1D0004E7A8 /* CCParticleSystem.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1717331E1D0004E7A8 /* CCParticleSystem.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B1B17331E1D0004E7A8 /* CCParticleSystemQuad.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1A17331E1D0004E7A8 /* CCParticleSystemQuad.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B1E17331E1D0004E7A8 /* CCProgressTimer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B1D17331E1D0004E7A8 /* CCProgressTimer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B2217331E1D0004E7A8 /* CCRenderTexture.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B2117331E1D0004E7A8 /* CCRenderTexture.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B2517331E1D0004E7A8 /* CCScene.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B2417331E1D0004E7A8 /* CCScene.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B2817331E1D0004E7A8 /* CCScheduler.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B2717331E1D0004E7A8 /* CCScheduler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B3817331E1D0004E7A8 /* CCShaderCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B3717331E1D0004E7A8 /* CCShaderCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B3B17331E1E0004E7A8 /* ccShaders.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B3A17331E1E0004E7A8 /* ccShaders.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B3E17331E1E0004E7A8 /* CCSprite.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B3D17331E1E0004E7A8 /* CCSprite.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B4117331E1E0004E7A8 /* CCSpriteBatchNode.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4017331E1E0004E7A8 /* CCSpriteBatchNode.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B4417331E1E0004E7A8 /* CCSpriteFrame.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4317331E1E0004E7A8 /* CCSpriteFrame.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B4717331E1E0004E7A8 /* CCSpriteFrameCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4617331E1E0004E7A8 /* CCSpriteFrameCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B4A17331E1E0004E7A8 /* CCTexture2D.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4917331E1E0004E7A8 /* CCTexture2D.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B4D17331E1E0004E7A8 /* CCTextureAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4C17331E1E0004E7A8 /* CCTextureAtlas.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B5017331E1E0004E7A8 /* CCTextureCache.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B4F17331E1E0004E7A8 /* CCTextureCache.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B5317331E1E0004E7A8 /* CCTexturePVR.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5217331E1E0004E7A8 /* CCTexturePVR.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B5617331E1E0004E7A8 /* CCTileMapAtlas.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5517331E1E0004E7A8 /* CCTileMapAtlas.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B5917331E1E0004E7A8 /* CCTMXLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5817331E1E0004E7A8 /* CCTMXLayer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B5C17331E1E0004E7A8 /* CCTMXObjectGroup.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5B17331E1E0004E7A8 /* CCTMXObjectGroup.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B5F17331E1E0004E7A8 /* CCTMXTiledMap.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B5E17331E1E0004E7A8 /* CCTMXTiledMap.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B6217331E1E0004E7A8 /* CCTMXXMLParser.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6117331E1E0004E7A8 /* CCTMXXMLParser.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B6517331E1E0004E7A8 /* CCTransition.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6417331E1E0004E7A8 /* CCTransition.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B6817331E1E0004E7A8 /* CCTransitionPageTurn.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6717331E1E0004E7A8 /* CCTransitionPageTurn.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B6B17331E1E0004E7A8 /* CCTransitionProgress.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6A17331E1E0004E7A8 /* CCTransitionProgress.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B6F17331E1E0004E7A8 /* cocos2d.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B6E17331E1E0004E7A8 /* cocos2d.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B7617331E1E0004E7A8 /* CCDirectorIOS.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B7517331E1E0004E7A8 /* CCDirectorIOS.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B7917331E1E0004E7A8 /* CCES2Renderer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B7817331E1E0004E7A8 /* CCES2Renderer.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B7D17331E1E0004E7A8 /* CCGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B7C17331E1E0004E7A8 /* CCGLView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B8117331E1E0004E7A8 /* CCTouchDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8017331E1E0004E7A8 /* CCTouchDispatcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B8417331E1E0004E7A8 /* CCTouchHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8317331E1E0004E7A8 /* CCTouchHandler.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B8817331E1E0004E7A8 /* CCDirectorMac.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8717331E1E0004E7A8 /* CCDirectorMac.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B8B17331E1E0004E7A8 /* CCEventDispatcher.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8A17331E1E0004E7A8 /* CCEventDispatcher.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B8E17331E1E0004E7A8 /* CCGLView.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B8D17331E1E0004E7A8 /* CCGLView.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B9117331E1E0004E7A8 /* CCWindow.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9017331E1E0004E7A8 /* CCWindow.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B9417331E1E0004E7A8 /* base64.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9317331E1E0004E7A8 /* base64.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B9817331E1F0004E7A8 /* CCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9717331E1F0004E7A8 /* CCArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B9B17331E1F0004E7A8 /* ccCArray.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9A17331E1F0004E7A8 /* ccCArray.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56B9E17331E1F0004E7A8 /* CCFileUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56B9D17331E1F0004E7A8 /* CCFileUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BA117331E1F0004E7A8 /* CCProfiling.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BA017331E1F0004E7A8 /* CCProfiling.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BA317331E1F0004E7A8 /* ccUtils.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BA217331E1F0004E7A8 /* ccUtils.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BA717331E1F0004E7A8 /* CCVertex.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BA617331E1F0004E7A8 /* CCVertex.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BAA17331E1F0004E7A8 /* CGPointExtension.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BA917331E1F0004E7A8 /* CGPointExtension.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BAD17331E1F0004E7A8 /* NSThread+performBlock.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BAC17331E1F0004E7A8 /* NSThread+performBlock.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BB117331E1F0004E7A8 /* TGAlib.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BB017331E1F0004E7A8 /* TGAlib.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BB417331E1F0004E7A8 /* TransformUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BB317331E1F0004E7A8 /* TransformUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BB917331E1F0004E7A8 /* ZipUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BB817331E1F0004E7A8 /* ZipUtils.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BBE17331E1F0004E7A8 /* CDAudioManager.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BBD17331E1F0004E7A8 /* CDAudioManager.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BC217331E1F0004E7A8 /* CDOpenALSupport.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BC117331E1F0004E7A8 /* CDOpenALSupport.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BC517331E1F0004E7A8 /* CocosDenshion.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BC417331E1F0004E7A8 /* CocosDenshion.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BC817331E1F0004E7A8 /* SimpleAudioEngine.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BC717331E1F0004E7A8 /* SimpleAudioEngine.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BDE17331E1F0004E7A8 /* aabb.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BDD17331E1F0004E7A8 /* aabb.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E9E56BE017331E1F0004E7A8 /* ChangeLog in Resources */ = {isa = PBXBuildFile; fileRef = E9E56BDF17331E1F0004E7A8 /* ChangeLog */; };
-		E9E56BE417331E1F0004E7A8 /* mat4stack.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BE317331E1F0004E7A8 /* mat4stack.c */; };
-		E9E56BE617331E1F0004E7A8 /* matrix.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BE517331E1F0004E7A8 /* matrix.c */; };
-		E9E56BE817331E1F0004E7A8 /* mat3.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BE717331E1F0004E7A8 /* mat3.c */; };
-		E9E56BEA17331E1F0004E7A8 /* mat4.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BE917331E1F0004E7A8 /* mat4.c */; };
-		E9E56BEC17331E1F0004E7A8 /* neon_matrix_impl.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BEB17331E1F0004E7A8 /* neon_matrix_impl.c */; };
-		E9E56BEE17331E1F0004E7A8 /* plane.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BED17331E1F0004E7A8 /* plane.c */; };
-		E9E56BF017331E1F0004E7A8 /* quaternion.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BEF17331E1F0004E7A8 /* quaternion.c */; };
-		E9E56BF217331E1F0004E7A8 /* ray2.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF117331E1F0004E7A8 /* ray2.c */; };
-		E9E56BF417331E200004E7A8 /* utility.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF317331E200004E7A8 /* utility.c */; };
-		E9E56BF617331E200004E7A8 /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF517331E200004E7A8 /* vec2.c */; };
-		E9E56BF817331E200004E7A8 /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF717331E200004E7A8 /* vec3.c */; };
-		E9E56BFA17331E200004E7A8 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF917331E200004E7A8 /* vec4.c */; };
+		E9E56BE417331E1F0004E7A8 /* mat4stack.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BE317331E1F0004E7A8 /* mat4stack.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BE617331E1F0004E7A8 /* matrix.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BE517331E1F0004E7A8 /* matrix.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BE817331E1F0004E7A8 /* mat3.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BE717331E1F0004E7A8 /* mat3.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BEA17331E1F0004E7A8 /* mat4.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BE917331E1F0004E7A8 /* mat4.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BEC17331E1F0004E7A8 /* neon_matrix_impl.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BEB17331E1F0004E7A8 /* neon_matrix_impl.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BEE17331E1F0004E7A8 /* plane.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BED17331E1F0004E7A8 /* plane.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BF017331E1F0004E7A8 /* quaternion.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BEF17331E1F0004E7A8 /* quaternion.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BF217331E1F0004E7A8 /* ray2.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF117331E1F0004E7A8 /* ray2.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BF417331E200004E7A8 /* utility.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF317331E200004E7A8 /* utility.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BF617331E200004E7A8 /* vec2.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF517331E200004E7A8 /* vec2.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BF817331E200004E7A8 /* vec3.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF717331E200004E7A8 /* vec3.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
+		E9E56BFA17331E200004E7A8 /* vec4.c in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BF917331E200004E7A8 /* vec4.c */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E9E56BFF17331E200004E7A8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56BFE17331E200004E7A8 /* main.m */; };
 		E9E56C0217331E200004E7A8 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56C0117331E200004E7A8 /* AppDelegate.m */; };
 		E9E56C0517331E200004E7A8 /* MainLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56C0417331E200004E7A8 /* MainLayer.m */; };
@@ -149,6 +153,11 @@
 		E9DECE5217355CE600F6FF8C /* ball1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball1.png; path = Resources/ball1.png; sourceTree = "<group>"; };
 		E9DECE5317355CE600F6FF8C /* ball2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball2.png; path = Resources/ball2.png; sourceTree = "<group>"; };
 		E9DECE5417355CE600F6FF8C /* ball3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball3.png; path = Resources/ball3.png; sourceTree = "<group>"; };
+		E9E0B5E31739E18900751902 /* SCNode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNode.h; sourceTree = "<group>"; };
+		E9E0B5E41739E18900751902 /* SCNode.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNode.m; sourceTree = "<group>"; };
+		E9E0B5E61739E56100751902 /* active_node.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = active_node.png; path = Resources/active_node.png; sourceTree = "<group>"; };
+		E9E0B5E71739E56100751902 /* muted_node.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = muted_node.png; path = Resources/muted_node.png; sourceTree = "<group>"; };
+		E9E0B5E81739E56100751902 /* node.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = node.png; path = Resources/node.png; sourceTree = "<group>"; };
 		E9E56A7317331E1B0004E7A8 /* Q.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Q.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E9E56A7617331E1B0004E7A8 /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		E9E56A7817331E1B0004E7A8 /* OpenGLES.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = OpenGLES.framework; path = System/Library/Frameworks/OpenGLES.framework; sourceTree = SDKROOT; };
@@ -474,6 +483,8 @@
 				E9E56C0117331E200004E7A8 /* AppDelegate.m */,
 				E9E56C0317331E200004E7A8 /* MainLayer.h */,
 				E9E56C0417331E200004E7A8 /* MainLayer.m */,
+				E9E0B5E31739E18900751902 /* SCNode.h */,
+				E9E0B5E41739E18900751902 /* SCNode.m */,
 				E9297CDF1733317400830D79 /* SCStream.h */,
 				E9297CE01733317400830D79 /* SCStream.m */,
 				E9297CDC17332D6500830D79 /* SCParticle.h */,
@@ -490,6 +501,9 @@
 		E9E56A8917331E1B0004E7A8 /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				E9E0B5E61739E56100751902 /* active_node.png */,
+				E9E0B5E71739E56100751902 /* muted_node.png */,
+				E9E0B5E81739E56100751902 /* node.png */,
 				E9DECE5217355CE600F6FF8C /* ball1.png */,
 				E9DECE5317355CE600F6FF8C /* ball2.png */,
 				E9DECE5417355CE600F6FF8C /* ball3.png */,
@@ -921,6 +935,9 @@
 				E9DECE5517355CE600F6FF8C /* ball1.png in Resources */,
 				E9DECE5617355CE600F6FF8C /* ball2.png in Resources */,
 				E9DECE5717355CE600F6FF8C /* ball3.png in Resources */,
+				E9E0B5E91739E56100751902 /* active_node.png in Resources */,
+				E9E0B5EA1739E56100751902 /* muted_node.png in Resources */,
+				E9E0B5EB1739E56100751902 /* node.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1037,6 +1054,7 @@
 				E9E56C0817331E200004E7A8 /* IntroLayer.m in Sources */,
 				E9297CDE17332D6500830D79 /* SCParticle.m in Sources */,
 				E9297CE11733317400830D79 /* SCStream.m in Sources */,
+				E9E0B5E51739E18900751902 /* SCNode.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1087,7 +1105,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
@@ -1107,7 +1125,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				CLANG_ENABLE_OBJC_ARC = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = Q/Prefix.pch;

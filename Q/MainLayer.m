@@ -53,28 +53,27 @@
     //NSLog(@"Main layer: Touches began.");
     UITouch *touch = [touches anyObject];
     CGPoint position = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
-    SCStream *stream = [[SCStream alloc] initWithPosition:position];
-    [stream setActiveStatus:YES];
-    [stream acknowledgeTouch];
-    [stream ccTouchesBegan:touches withEvent:event];
-    [self addChild:stream z:0 tag:streamTag];
-    streamTag++;
+    
+    NSString *selectedItem = @"stream";
+    
+    if ([selectedItem isEqual: @"node"]) {
+        
+        SCNode *node = [[SCNode alloc] initWithPosition:position];
+        [self addChild:node];
+    
+    } else if ([selectedItem isEqual: @"stream"]) {
+    
+        SCStream *stream = [[SCStream alloc] initWithPosition:position];
+        [stream active:YES];
+        [stream ignoreTouch:NO];
+        [stream ccTouchesBegan:touches withEvent:event];
+        [self addChild:stream];
+    }
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     //NSLog(@"Main layer: Touches ended.");
-    [[self children] makeObjectsPerformSelector:@selector(ignoreTouch)];
-}
-
-// on "dealloc" you need to release all your retained objects
-- (void) dealloc
-{
-	// in case you have something to dealloc, do it in this method
-	// in this particular example nothing needs to be released.
-	// cocos2d will automatically release all the children (Label)
-	
-	// don't forget to call "super dealloc"
-	[super dealloc];
+    [[self children] makeObjectsPerformSelector:@selector(ignoreTouches)];
 }
 
 @end

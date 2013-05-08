@@ -9,13 +9,13 @@
 #import "SCParticle.h"
 
 @implementation SCParticle
+@synthesize position, sprite;
 
 -(id) initWithPosition:(CGPoint) particlePosition {
     
     self = [super init];
     
 	if( self ) {
-        [sprite release];
         sprite = [CCSprite spriteWithFile:@"ball0.png"];
         sprite.position = ccp(particlePosition.x, particlePosition.y);
         [self addChild:sprite];
@@ -28,7 +28,6 @@
     self = [super init];
     
 	if( self ) {
-        [sprite release];
         sprite = [CCSprite spriteWithFile:ballName];
         sprite.position = ccp(particlePosition.x, particlePosition.y);
         [self addChild:sprite];
@@ -44,9 +43,5 @@
     return sprite.position;
 }
 
--(void)dealloc {
-    [sprite release];
-    [super dealloc];
-}
 
 @end
