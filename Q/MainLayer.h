@@ -14,12 +14,20 @@
 #import <UIKit/UIKit.h>
 #import "CCUIViewWrapper.h"
 
+@class PGMidi;
+
 // MainLayer.h
 @interface MainLayer : CCLayer <CCStandardTouchDelegate>
 {
-    UIButton *button;
-    CCUIViewWrapper *buttonWrapper;
+    NSInteger    selectedTool;
+    PGMidi       *midi;
 }
+
+
+
+extern NSInteger const CREATE_NODE_BUTTON;
+extern NSInteger const CREATE_STREAM_BUTTON;
+extern NSInteger const NO_TOOL_SELECTED;
 
 // returns a CCScene that contains the MainLayer as the only child
 +(CCScene *) scene;

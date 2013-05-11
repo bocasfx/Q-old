@@ -10,6 +10,10 @@
 		E90B3EF8173B026B00CFF4CD /* CCUIViewWrapper.m in Sources */ = {isa = PBXBuildFile; fileRef = E90B3EF7173B026B00CFF4CD /* CCUIViewWrapper.m */; settings = {COMPILER_FLAGS = "-fno-objc-arc"; }; };
 		E9297CDE17332D6500830D79 /* SCParticle.m in Sources */ = {isa = PBXBuildFile; fileRef = E9297CDD17332D6500830D79 /* SCParticle.m */; };
 		E9297CE11733317400830D79 /* SCStream.m in Sources */ = {isa = PBXBuildFile; fileRef = E9297CE01733317400830D79 /* SCStream.m */; };
+		E936C58A173DAA71003BE428 /* PGMidi.mm in Sources */ = {isa = PBXBuildFile; fileRef = E936C585173DAA71003BE428 /* PGMidi.mm */; };
+		E936C58B173DAA71003BE428 /* PGMidiAllSources.mm in Sources */ = {isa = PBXBuildFile; fileRef = E936C587173DAA71003BE428 /* PGMidiAllSources.mm */; };
+		E936C58C173DAA71003BE428 /* PGMidiFind.mm in Sources */ = {isa = PBXBuildFile; fileRef = E936C589173DAA71003BE428 /* PGMidiFind.mm */; };
+		E936C58F173DE36C003BE428 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E936C58E173DE36C003BE428 /* CoreMIDI.framework */; };
 		E9DECE5517355CE600F6FF8C /* ball1.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5217355CE600F6FF8C /* ball1.png */; };
 		E9DECE5617355CE600F6FF8C /* ball2.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5317355CE600F6FF8C /* ball2.png */; };
 		E9DECE5717355CE600F6FF8C /* ball3.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5417355CE600F6FF8C /* ball3.png */; };
@@ -153,6 +157,15 @@
 		E9297CDD17332D6500830D79 /* SCParticle.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCParticle.m; sourceTree = "<group>"; };
 		E9297CDF1733317400830D79 /* SCStream.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCStream.h; sourceTree = "<group>"; };
 		E9297CE01733317400830D79 /* SCStream.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCStream.m; sourceTree = "<group>"; };
+		E936C582173DAA71003BE428 /* iOSVersionDetection.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = iOSVersionDetection.h; sourceTree = "<group>"; };
+		E936C583173DAA71003BE428 /* PGArc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGArc.h; sourceTree = "<group>"; };
+		E936C584173DAA71003BE428 /* PGMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMidi.h; sourceTree = "<group>"; };
+		E936C585173DAA71003BE428 /* PGMidi.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PGMidi.mm; sourceTree = "<group>"; };
+		E936C586173DAA71003BE428 /* PGMidiAllSources.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMidiAllSources.h; sourceTree = "<group>"; };
+		E936C587173DAA71003BE428 /* PGMidiAllSources.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PGMidiAllSources.mm; sourceTree = "<group>"; };
+		E936C588173DAA71003BE428 /* PGMidiFind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMidiFind.h; sourceTree = "<group>"; };
+		E936C589173DAA71003BE428 /* PGMidiFind.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PGMidiFind.mm; sourceTree = "<group>"; };
+		E936C58E173DE36C003BE428 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
 		E9DECE5217355CE600F6FF8C /* ball1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball1.png; path = Resources/ball1.png; sourceTree = "<group>"; };
 		E9DECE5317355CE600F6FF8C /* ball2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball2.png; path = Resources/ball2.png; sourceTree = "<group>"; };
 		E9DECE5417355CE600F6FF8C /* ball3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball3.png; path = Resources/ball3.png; sourceTree = "<group>"; };
@@ -440,12 +453,28 @@
 				E9E56A8317331E1B0004E7A8 /* Foundation.framework in Frameworks */,
 				E9E56A8517331E1B0004E7A8 /* CoreGraphics.framework in Frameworks */,
 				E9E56A8717331E1B0004E7A8 /* GameKit.framework in Frameworks */,
+				E936C58F173DE36C003BE428 /* CoreMIDI.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		E936C581173DAA71003BE428 /* PGMidi */ = {
+			isa = PBXGroup;
+			children = (
+				E936C582173DAA71003BE428 /* iOSVersionDetection.h */,
+				E936C583173DAA71003BE428 /* PGArc.h */,
+				E936C584173DAA71003BE428 /* PGMidi.h */,
+				E936C585173DAA71003BE428 /* PGMidi.mm */,
+				E936C586173DAA71003BE428 /* PGMidiAllSources.h */,
+				E936C587173DAA71003BE428 /* PGMidiAllSources.mm */,
+				E936C588173DAA71003BE428 /* PGMidiFind.h */,
+				E936C589173DAA71003BE428 /* PGMidiFind.mm */,
+			);
+			path = PGMidi;
+			sourceTree = "<group>";
+		};
 		E9E56A6A17331E1B0004E7A8 = {
 			isa = PBXGroup;
 			children = (
@@ -466,6 +495,7 @@
 		E9E56A7517331E1B0004E7A8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				E936C58E173DE36C003BE428 /* CoreMIDI.framework */,
 				E9E56A7617331E1B0004E7A8 /* QuartzCore.framework */,
 				E9E56A7817331E1B0004E7A8 /* OpenGLES.framework */,
 				E9E56A7A17331E1B0004E7A8 /* OpenAL.framework */,
@@ -496,6 +526,7 @@
 				E9E56C0717331E200004E7A8 /* IntroLayer.m */,
 				E90B3EF6173B026B00CFF4CD /* CCUIViewWrapper.h */,
 				E90B3EF7173B026B00CFF4CD /* CCUIViewWrapper.m */,
+				E936C581173DAA71003BE428 /* PGMidi */,
 				E9E56A8917331E1B0004E7A8 /* Resources */,
 				E9E56AA317331E1C0004E7A8 /* libs */,
 				E9E56BFC17331E200004E7A8 /* Supporting Files */,
@@ -1061,6 +1092,9 @@
 				E9297CE11733317400830D79 /* SCStream.m in Sources */,
 				E9E0B5E51739E18900751902 /* SCNode.m in Sources */,
 				E90B3EF8173B026B00CFF4CD /* CCUIViewWrapper.m in Sources */,
+				E936C58A173DAA71003BE428 /* PGMidi.mm in Sources */,
+				E936C58B173DAA71003BE428 /* PGMidiAllSources.mm in Sources */,
+				E936C58C173DAA71003BE428 /* PGMidiFind.mm in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
