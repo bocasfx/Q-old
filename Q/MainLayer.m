@@ -6,56 +6,29 @@
 //  Copyright __MyCompanyName__ 2013. All rights reserved.
 //
 
-
-// Import the interfaces
 #import "MainLayer.h"
-
-// Needed to obtain the Navigation Controller
 #import "AppDelegate.h"
-
-#import "PGMidi.h"
-#import "iOSVersionDetection.h"
-#import "PGArc.h"
-#import <CoreMIDI/CoreMIDI.h>
 
 int RandomNoteNumber() { return rand() / (RAND_MAX / 127); }
 
-@interface MainLayer () <PGMidiDelegate, PGMidiSourceDelegate>
-- (void) updateCountLabel;
-- (void) addString:(NSString*)string;
-- (void) sendMidiDataInBackground;
-@end
-
 #pragma mark - MainLayer
 
-// MainLayer implementation
 @implementation MainLayer
 
 NSInteger const NO_TOOL_SELECTED = -1;
 NSInteger const CREATE_NODE_BUTTON = 0;
 NSInteger const CREATE_STREAM_BUTTON = 1;
 
-// Helper class method that creates a Scene with the MainLayer as the only child.
 +(CCScene *) scene
 {
-	// 'scene' is an autorelease object.
 	CCScene *scene = [CCScene node];
-	
-	// 'layer' is an autorelease object.
 	MainLayer *layer = [MainLayer node];
-	
-	// add layer as a child to scene
 	[scene addChild: layer];
-	
-	// return the scene
 	return scene;
 }
 
-// on "init" you need to initialize your instance
 -(id) init
 {
-	// always call "super" init
-	// Apple recommends to re-assign "self" with the "super's" return value
 	if( (self=[super init]) ) {
         self.isTouchEnabled = YES;
         
@@ -63,13 +36,13 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
                    selectedImage:[UIImage imageNamed:@"icon-72.png"]
                              tag:CREATE_NODE_BUTTON
                            frame:CGRectMake( 20, 20, 92, 92 )
-                        selector:@"createNodeButtonTapped"];
+                        selector:@"createNodeButtonTapped:"];
         
         [self addButtonWithImage:[UIImage imageNamed:@"icon-72.png"]
                    selectedImage:[UIImage imageNamed:@"icon-72.png"]
                              tag:CREATE_STREAM_BUTTON
                            frame:CGRectMake( 100, 20, 172, 92 )
-                        selector:@"createStreamButtonTapped"];
+                        selector:@"createStreamButtonTapped:"];
         
         selectedTool = -1;
         
@@ -97,29 +70,24 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
     [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
 }
 
--(void)createNodeButtonTapped {
-    NSLog(@"Create node button tapped");
-    UIButton *button = (UIButton *)[self getChildByTag:CREATE_NODE_BUTTON];
-    //button.selected = !button.selected;
+-(IBAction)createNodeButtonTapped:(id) sender {
+    UIButton *button = (UIButton *)sender;
+    button.selected = !button.selected;
     if (button.selected) {
         selectedTool = CREATE_NODE_BUTTON;
     } else {
         selectedTool = NO_TOOL_SELECTED;
     }
-    NSLog(@"Selected tool: %d", selectedTool);
 }
 
--(void)createStreamButtonTapped {
-    NSLog(@"Create stream button tapped");
-    UIButton *button = (UIButton *)[self getChildByTag:CREATE_STREAM_BUTTON];
-    //button.selected = !button.selected;
+-(IBAction)createStreamButtonTapped:(id) sender {
+    UIButton *button = (UIButton *)sender;
+    button.selected = !button.selected;
     if (button.selected) {
         selectedTool = CREATE_STREAM_BUTTON;
     } else {
         selectedTool = NO_TOOL_SELECTED;
     }
-    
-    NSLog(@"Selected tool: %d", selectedTool);
 }
 
 -(void) registerWithTouchDispatcher {
@@ -161,31 +129,31 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
 //            connection.name, ToString(connection.isNetworkSession)];
 //}
 
-- (IBAction) listAllInterfaces
-{
-    IF_IOS_HAS_COREMIDI
-    ({
-        [self addString:@"\n\nInterface list:"];
-        for (PGMidiSource *source in midi.sources)
-        {
-//            NSString *description = [NSString stringWithFormat:@"Source: %@", ToString(source)];
-//            [self addString:description];
-        }
-        [self addString:@""];
-        for (PGMidiDestination *destination in midi.destinations)
-        {
-//            NSString *description = [NSString stringWithFormat:@"Destination: %@", ToString(destination)];
-//            [self addString:description];
-        }
-    })
-}
+//- (IBAction) listAllInterfaces
+//{
+//    IF_IOS_HAS_COREMIDI
+//    ({
+//        [self addString:@"\n\nInterface list:"];
+//        for (PGMidiSource *source in midi.sources)
+//        {
+////            NSString *description = [NSString stringWithFormat:@"Source: %@", ToString(source)];
+////            [self addString:description];
+//        }
+//        [self addString:@""];
+//        for (PGMidiDestination *destination in midi.destinations)
+//        {
+////            NSString *description = [NSString stringWithFormat:@"Destination: %@", ToString(destination)];
+////            [self addString:description];
+//        }
+//    })
+//}
 
-- (IBAction) sendMidiData
-{
-    [self performSelectorInBackground:@selector(sendMidiDataInBackground) withObject:nil];
-}
+//- (IBAction) sendMidiData
+//{
+//    [self performSelectorInBackground:@selector(sendMidiDataInBackground) withObject:nil];
+//}
 
-#pragma mark Shenanigans
+#pragma mark - Shenanigans
 
 - (void) attachToAllExistingSources
 {
