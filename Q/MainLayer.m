@@ -30,19 +30,31 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
 -(id) init
 {
 	if( (self=[super init]) ) {
+        
         self.isTouchEnabled = YES;
         
-        [self addButtonWithImage:[UIImage imageNamed:@"icon-72.png"]
+        toolButtons = [NSMutableArray array];
+        streams = [NSMutableArray array];
+        nodes = [NSMutableArray array];
+        
+        UIButton * button;
+        button = [self addButtonWithImage:[UIImage imageNamed:@"icon-72.png"]
                    selectedImage:[UIImage imageNamed:@"icon-72.png"]
                              tag:CREATE_NODE_BUTTON
                            frame:CGRectMake( 20, 20, 92, 92 )
-                        selector:@"createNodeButtonTapped:"];
+                        selector:@"toolButtonTapped:"];
         
-        [self addButtonWithImage:[UIImage imageNamed:@"icon-72.png"]
+        [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+        [toolButtons addObject:button];
+        
+        button = [self addButtonWithImage:[UIImage imageNamed:@"icon-72.png"]
                    selectedImage:[UIImage imageNamed:@"icon-72.png"]
                              tag:CREATE_STREAM_BUTTON
                            frame:CGRectMake( 100, 20, 172, 92 )
-                        selector:@"createStreamButtonTapped:"];
+                        selector:@"toolButtonTapped:"];
+        
+        [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+        [toolButtons addObject:button];
         
         selectedTool = -1;
         
@@ -57,41 +69,36 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
 	return self;
 }
 
--(void)addButtonWithImage:(UIImage *)normalImage
-            selectedImage:(UIImage *)selectedImage
-            tag:(NSInteger *)tag
-            frame:(CGRect)frame
-            selector:(NSString *)selector {
+-(void) registerWithTouchDispatcher {
+	[[[CCDirector sharedDirector] touchDispatcher] addStandardDelegate:self priority:0];
+}
+
+-(UIButton *)addButtonWithImage:(UIImage *)normalImage
+                  selectedImage:(UIImage *)selectedImage
+                            tag:(NSInteger *)tag
+                          frame:(CGRect)frame
+                       selector:(NSString *)selector {
     UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
     [button addTarget:self action:NSSelectorFromString(selector) forControlEvents:UIControlEventTouchDown];
     button.frame = frame;
+    button.tag = tag;
     [button setImage:normalImage forState:UIControlStateNormal];
     [button setImage:selectedImage forState:UIControlStateSelected];
-    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+    return button;
 }
 
--(IBAction)createNodeButtonTapped:(id) sender {
+-(IBAction)toolButtonTapped:(id) sender {
     UIButton *button = (UIButton *)sender;
-    button.selected = !button.selected;
     if (button.selected) {
-        selectedTool = CREATE_NODE_BUTTON;
-    } else {
+        button.selected = NO;
         selectedTool = NO_TOOL_SELECTED;
-    }
-}
-
--(IBAction)createStreamButtonTapped:(id) sender {
-    UIButton *button = (UIButton *)sender;
-    button.selected = !button.selected;
-    if (button.selected) {
-        selectedTool = CREATE_STREAM_BUTTON;
     } else {
-        selectedTool = NO_TOOL_SELECTED;
+        for (UIButton *btn in toolButtons) {
+            btn.selected = NO;
+        }
+        button.selected = YES;
+        selectedTool = button.tag;
     }
-}
-
--(void) registerWithTouchDispatcher {
-	[[[CCDirector sharedDirector] touchDispatcher] addStandardDelegate:self priority:0];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -103,6 +110,7 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
         
         SCNode *node = [[SCNode alloc] initWithPosition:position];
         [self addChild:node];
+        [nodes addObject:node];
         NSLog(@"Created node");
     
     } else if (selectedTool == CREATE_STREAM_BUTTON) {
@@ -112,13 +120,13 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
         [stream ignoreTouch:NO];
         [stream ccTouchesBegan:touches withEvent:event];
         [self addChild:stream];
+        [streams addObject:stream];
         NSLog(@"Created stream");
     }
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    //NSLog(@"Main layer: Touches ended.");
-    //[[self children] makeObjectsPerformSelector:@selector(ignoreTouches)];
+    [streams makeObjectsPerformSelector:@selector(ignoreTouches)];
 }
 
 #pragma mark - PGMidi

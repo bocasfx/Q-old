@@ -23,8 +23,11 @@
 // MainLayer.h
 @interface MainLayer : CCLayer <CCStandardTouchDelegate, PGMidiDelegate, PGMidiSourceDelegate>
 {
-    NSInteger    selectedTool;
-    PGMidi       *midi;
+    NSInteger       selectedTool;
+    PGMidi          *midi;
+    NSMutableArray  *toolButtons;
+    NSMutableArray  *streams;
+    NSMutableArray  *nodes;
 }
 
 extern NSInteger const CREATE_NODE_BUTTON;
