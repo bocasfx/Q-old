@@ -18,6 +18,9 @@ int RandomNoteNumber() { return rand() / (RAND_MAX / 127); }
 NSInteger const NO_TOOL_SELECTED = -1;
 NSInteger const CREATE_NODE_BUTTON = 0;
 NSInteger const CREATE_STREAM_BUTTON = 1;
+NSInteger const SETTINGS_BUTTON = 2;
+NSInteger const LINK_NODES_BUTTON = 3;
+NSInteger const PLAY_PAUSE_BUTTON = 4;
 
 +(CCScene *) scene
 {
@@ -37,24 +40,17 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
         streams = [NSMutableArray array];
         nodes = [NSMutableArray array];
         
-        UIButton * button;
-        button = [self addButtonWithImage:[UIImage imageNamed:@"icon-72.png"]
-                   selectedImage:[UIImage imageNamed:@"icon-72.png"]
-                             tag:CREATE_NODE_BUTTON
-                           frame:CGRectMake( 20, 20, 92, 92 )
-                        selector:@"toolButtonTapped:"];
+//        grid = [CCSprite spriteWithFile:@"grid.png"];
+//        grid.position = ccp(self.boundingBox.size.width / 2.0, self.boundingBox.size.height / 2.0);
+//        grid.opacity = 64;
+//        ccBlendFunc bf;
+//        bf.src = GL_ONE;
+//        bf.dst = GL_ZERO;
+//        grid.blendFunc = bf;
+//        [self addChild:grid];
+//        http://www.cocos2d-iphone.org/forum/topic/5196/page/3
         
-        [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
-        [toolButtons addObject:button];
-        
-        button = [self addButtonWithImage:[UIImage imageNamed:@"icon-72.png"]
-                   selectedImage:[UIImage imageNamed:@"icon-72.png"]
-                             tag:CREATE_STREAM_BUTTON
-                           frame:CGRectMake( 100, 20, 172, 92 )
-                        selector:@"toolButtonTapped:"];
-        
-        [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
-        [toolButtons addObject:button];
+        [self createButtons];
         
         selectedTool = -1;
         
@@ -67,6 +63,53 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
 	}
 
 	return self;
+}
+
+-(void)createButtons {
+    UIButton * button;
+    button = [self addButtonWithImage:[UIImage imageNamed:@"node_up.png"]
+                        selectedImage:[UIImage imageNamed:@"node_down.png"]
+                                  tag:CREATE_NODE_BUTTON
+                                frame:CGRectMake( 10, 10, 32, 32 )
+                             selector:@"toolButtonTapped:"];
+    
+    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+    [toolButtons addObject:button];
+    
+    button = [self addButtonWithImage:[UIImage imageNamed:@"stream_up.png"]
+                        selectedImage:[UIImage imageNamed:@"stream_down.png"]
+                                  tag:CREATE_STREAM_BUTTON
+                                frame:CGRectMake( 10, 52, 32, 32 )
+                             selector:@"toolButtonTapped:"];
+    
+    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+    [toolButtons addObject:button];
+    
+    button = [self addButtonWithImage:[UIImage imageNamed:@"gear_up.png"]
+                        selectedImage:[UIImage imageNamed:@"gear_down.png"]
+                                  tag:SETTINGS_BUTTON
+                                frame:CGRectMake( 10, 94, 32, 32 )
+                             selector:@"toolButtonTapped:"];
+    
+    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+    [toolButtons addObject:button];
+    
+    button = [self addButtonWithImage:[UIImage imageNamed:@"link_up.png"]
+                        selectedImage:[UIImage imageNamed:@"link_down.png"]
+                                  tag:LINK_NODES_BUTTON
+                                frame:CGRectMake( 10, 136, 32, 32 )
+                             selector:@"toolButtonTapped:"];
+    
+    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+    [toolButtons addObject:button];
+    
+    button = [self addButtonWithImage:[UIImage imageNamed:@"pause.png"]
+                        selectedImage:[UIImage imageNamed:@"play.png"]
+                                  tag:PLAY_PAUSE_BUTTON
+                                frame:CGRectMake( 10, 178, 32, 32 )
+                             selector:@"playButtonTapped:"];
+    
+    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
 }
 
 -(void) registerWithTouchDispatcher {
@@ -99,6 +142,21 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
         button.selected = YES;
         selectedTool = button.tag;
     }
+    
+    if (selectedTool == SETTINGS_BUTTON) {
+        NSLog(@"Settings");
+    }
+}
+
+-(IBAction)playButtonTapped:(id)sender {
+    UIButton *button = (UIButton *)sender;
+    if (button.selected) {
+        button.selected = NO;
+        NSLog(@"Pause");
+    } else {
+        button.selected = YES;
+        NSLog(@"Play");
+    }
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -122,6 +180,8 @@ NSInteger const CREATE_STREAM_BUTTON = 1;
         [self addChild:stream];
         [streams addObject:stream];
         NSLog(@"Created stream");
+    } else if (selectedTool == LINK_NODES_BUTTON) {
+        NSLog(@"Link nodes");
     }
 }
 
