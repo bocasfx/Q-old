@@ -9,26 +9,25 @@
 #import "SCNode.h"
 
 @implementation SCNode
-@synthesize position, sprite;
 
 -(id) initWithPosition:(CGPoint) pos {
     
     self = [super init];
     
 	if( self ) {
-        sprite = [CCSprite spriteWithFile:@"node.png"];
-        sprite.position = ccp(pos.x, pos.y);
-        [self addChild:sprite];
+        _sprite = [CCSprite spriteWithFile:@"node.png"];
+        [_sprite position: ccp(pos.x, pos.y)];
+        [self addChild:_sprite];
 	}
 	return self;
 }
 
--(void)position:(CGPoint) pos {
-    sprite.position = pos;
+-(void)setPosition:(CGPoint) point {
+    [sprite position: point];
 }
 
 -(CGPoint)position {
-    return sprite.position;
+    return [sprite position];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {

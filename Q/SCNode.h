@@ -17,7 +17,5 @@
 @property (nonatomic, strong) CCSprite *sprite;
 
 -(id) initWithPosition:(CGPoint) pos;
--(void)position:(CGPoint) pos;
--(CGPoint)position;
 
 @end

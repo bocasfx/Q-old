@@ -9,16 +9,16 @@
 #import "SCStream.h"
 
 @implementation SCStream
-@synthesize easing,
-            headPosition,
-            particleCount,
-            streamSize,
-            pathIndex,
-            easingFactor,
-            touchDown,
-            particleArray,
-            streamQueue,
-            path;
+// @synthesize easing,
+//             headPosition,
+//             particleCount,
+//             streamSize,
+//             pathIndex,
+//             easingFactor,
+//             touchDown,
+//             particleArray,
+//             streamQueue,
+//             path;
 
 -(id) initWithPosition:(CGPoint) position {
     
@@ -26,14 +26,14 @@
     
     if (self) {
 
-        particleCount = 1;
-        streamSize = 100;
-        easing = position;
-        headPosition = position;
-        easingFactor = 0.08;
-        active = [NSNumber numberWithBool:YES];
-        touchDown = NO;
-        ignoreTouch = NO;
+        _setParticleCount =  1;
+        _setStreamSize = 100;
+        _setEasing = position;
+        _setHeadPosition = position;
+        _setEasingFactor = 0.08;
+        _setActive = YES;
+        _setTouchDown = NO;
+        _setIgnoreTouch = NO;
 
         particleArray = [[NSMutableArray alloc] init];
         streamQueue   = [[NSMutableArray alloc] init];
@@ -72,7 +72,7 @@
             }
         }
         
-        easing = [self calculateEasingForPoint:pathPoint withPrevEasing:easing andEasingFactor:easingFactor];
+        [self setEasing: [self calculateEasingForPoint:pathPoint withPrevEasing:easing andEasingFactor:easingFactor]];
         
         if ( [streamQueue count] < streamSize ) {
             [streamQueue insertObject:[NSValue valueWithCGPoint:easing] atIndex:0];
@@ -83,7 +83,7 @@
 
         pathIndex++;
         if ( pathIndex >= [path count] ) {
-            pathIndex = 0;
+            [self setPathIndex: 0];
         }
     } @catch (NSException * exception) {
         NSLog(@"Update exception: %@", exception);
@@ -100,7 +100,7 @@
             NSValue *value = [streamQueue objectAtIndex: i];
             CGPoint pt;
             [value getValue:&pt];
-            [particle position: CGPointMake(pt.x, pt.y)];
+            [particle setPosition: CGPointMake(pt.x, pt.y)];
             i += step;
             j += 1;
         }
@@ -133,31 +133,30 @@
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"Touches began with ignore touch: %c", ignoreTouch);
     if ( ignoreTouch ) return;
-    touchDown = YES;
+    [self setTouchDown: YES];
     [path removeAllObjects];
-    pathIndex = 0;
+    [self setPathIndex: 0];
     UITouch *touch = [touches anyObject];
-    headPosition = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
+    [self setHeadPosition: [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]]];
 }
 
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     //NSLog(@"SCStream: Touches moved.");
     UITouch *touch = [touches anyObject];
-    headPosition = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
+    [self setHeadPosition: [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]]];
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     //NSLog(@"SCStream: Touces ended.");
-    touchDown = NO;
+    [self setTouchDown: NO];
 }
 
--(void) active:(NSNumber *) value {
-    active = [value boolValue];
+-(void) setIgnoreTouchWithNSNumber:(NSNumber *)value {
+    [self setIgnoreTouch: [value boolValue]];
 }
 
--(void) ignoreTouch:(NSNumber *) value {
-    NSLog(@"Ignore touch to: %d", [value boolValue]);
-    ignoreTouch = [value boolValue];
+-(void) setActiveWithNSNumber:(NSNumber *)value {
+    [self setActive: [value boolValue]];
 }
 
 @end

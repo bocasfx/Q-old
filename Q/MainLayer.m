@@ -158,7 +158,7 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
 -(IBAction)playButtonTapped:(id)sender {
     UIButton *button = (UIButton *)sender;
     button.selected = !button.selected;
-    [streams makeObjectsPerformSelector:@selector(active:) withObject:[NSNumber numberWithBool:button.selected]];
+    [streams makeObjectsPerformSelector:@selector(setActiveWithNSNumber:) withObject:[NSNumber numberWithBool:button.selected]];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -189,7 +189,7 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"Sending ignore touch");
-    [streams makeObjectsPerformSelector:@selector(ignoreTouch:) withObject:[NSNumber numberWithBool:YES]];
+    [streams makeObjectsPerformSelector:@selector(setIgnoreTouchWithNSNumber:) withObject:[NSNumber numberWithBool:YES]];
 }
 
 #pragma mark - PGMidi

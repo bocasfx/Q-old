@@ -9,16 +9,15 @@
 #import "SCParticle.h"
 
 @implementation SCParticle
-@synthesize position, sprite;
 
 -(id) initWithPosition:(CGPoint) particlePosition {
     
     self = [super init];
     
 	if( self ) {
-        sprite = [CCSprite spriteWithFile:@"ball0.png"];
-        sprite.position = ccp(particlePosition.x, particlePosition.y);
-        [self addChild:sprite];
+        _sprite = [CCSprite spriteWithFile:@"ball0.png"];
+        [_sprite position: ccp(particlePosition.x, particlePosition.y)];
+        [self addChild: _sprite];
 	}
 	return self;
 }
@@ -28,20 +27,19 @@
     self = [super init];
     
 	if( self ) {
-        sprite = [CCSprite spriteWithFile:ballName];
-        sprite.position = ccp(particlePosition.x, particlePosition.y);
-        [self addChild:sprite];
+        _sprite = [CCSprite spriteWithFile:ballName];
+        [_sprite position: ccp(particlePosition.x, particlePosition.y)];
+        [self addChild:_sprite];
 	}
 	return self;
 }
 
--(void)position:(CGPoint) pos {
-    sprite.position = pos;
+-(void)setPosition:(CGPoint) point {
+    [sprite position: point];
 }
 
 -(CGPoint)position {
-    return sprite.position;
+    return [sprite position];
 }
-
 
 @end

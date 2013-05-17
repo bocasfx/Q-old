@@ -17,7 +17,5 @@
 
 -(id) initWithPosition:(CGPoint) particlePosition;
 -(id) initWithPosition:(CGPoint) particlePosition andBall:(NSString *) ballName;
--(void)position:(CGPoint) pos;
--(CGPoint)position;
 
 @end
