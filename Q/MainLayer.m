@@ -67,6 +67,8 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
 
 -(void)createButtons {
     UIButton * button;
+    
+    // Node
     button = [self addButtonWithImage:[UIImage imageNamed:@"node_up.png"]
                         selectedImage:[UIImage imageNamed:@"node_down.png"]
                                   tag:CREATE_NODE_BUTTON
@@ -76,6 +78,7 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
     [toolButtons addObject:button];
     
+    // Stream
     button = [self addButtonWithImage:[UIImage imageNamed:@"stream_up.png"]
                         selectedImage:[UIImage imageNamed:@"stream_down.png"]
                                   tag:CREATE_STREAM_BUTTON
@@ -85,6 +88,7 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
     [toolButtons addObject:button];
     
+    // Settings
     button = [self addButtonWithImage:[UIImage imageNamed:@"gear_up.png"]
                         selectedImage:[UIImage imageNamed:@"gear_down.png"]
                                   tag:SETTINGS_BUTTON
@@ -94,6 +98,7 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
     [toolButtons addObject:button];
     
+    // Link Nodes
     button = [self addButtonWithImage:[UIImage imageNamed:@"link_up.png"]
                         selectedImage:[UIImage imageNamed:@"link_down.png"]
                                   tag:LINK_NODES_BUTTON
@@ -103,12 +108,14 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
     [toolButtons addObject:button];
     
-    button = [self addButtonWithImage:[UIImage imageNamed:@"pause.png"]
-                        selectedImage:[UIImage imageNamed:@"play.png"]
+    // Play/Pause
+    button = [self addButtonWithImage:[UIImage imageNamed:@"play.png"]
+                        selectedImage:[UIImage imageNamed:@"pause.png"]
                                   tag:PLAY_PAUSE_BUTTON
                                 frame:CGRectMake( 10, 178, 32, 32 )
                              selector:@"playButtonTapped:"];
     
+    button.selected = YES;
     [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
 }
 
@@ -150,13 +157,8 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
 
 -(IBAction)playButtonTapped:(id)sender {
     UIButton *button = (UIButton *)sender;
-    if (button.selected) {
-        button.selected = NO;
-        NSLog(@"Pause");
-    } else {
-        button.selected = YES;
-        NSLog(@"Play");
-    }
+    button.selected = !button.selected;
+    [streams makeObjectsPerformSelector:@selector(active:) withObject:[NSNumber numberWithBool:button.selected]];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
@@ -174,8 +176,8 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     } else if (selectedTool == CREATE_STREAM_BUTTON) {
     
         SCStream *stream = [[SCStream alloc] initWithPosition:position];
-        [stream active:YES];
-        [stream ignoreTouch:NO];
+        [stream active:[NSNumber numberWithBool:YES]];
+        [stream ignoreTouch:[NSNumber numberWithBool:NO]];
         [stream ccTouchesBegan:touches withEvent:event];
         [self addChild:stream];
         [streams addObject:stream];
@@ -186,7 +188,8 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
 }
 
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
-    [streams makeObjectsPerformSelector:@selector(ignoreTouches)];
+    NSLog(@"Sending ignore touch");
+    [streams makeObjectsPerformSelector:@selector(ignoreTouch:) withObject:[NSNumber numberWithBool:YES]];
 }
 
 #pragma mark - PGMidi

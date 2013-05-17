@@ -14,9 +14,7 @@
             particleCount,
             streamSize,
             pathIndex,
-            active,
             easingFactor,
-            ignoreTouch,
             touchDown,
             particleArray,
             streamQueue,
@@ -33,7 +31,7 @@
         easing = position;
         headPosition = position;
         easingFactor = 0.08;
-        active = YES;
+        active = [NSNumber numberWithBool:YES];
         touchDown = NO;
         ignoreTouch = NO;
 
@@ -55,6 +53,11 @@
 }
 
 -(void) update:(ccTime) deltaTime {
+    
+    if (!active) {
+        return;
+    }
+    
     @try {
         
         CGPoint pathPoint = headPosition;
@@ -128,7 +131,7 @@
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    //NSLog(@"SCStream: Touces began.");
+    NSLog(@"Touches began with ignore touch: %c", ignoreTouch);
     if ( ignoreTouch ) return;
     touchDown = YES;
     [path removeAllObjects];
@@ -148,16 +151,13 @@
     touchDown = NO;
 }
 
--(void) active:(BOOL) value {
-    active = value;
+-(void) active:(NSNumber *) value {
+    active = [value boolValue];
 }
 
--(void) ignoreTouch:(BOOL) value {
-    ignoreTouch = value;
-}
-
--(void) ignoreTouches {
-    ignoreTouch = YES;
+-(void) ignoreTouch:(NSNumber *) value {
+    NSLog(@"Ignore touch to: %d", [value boolValue]);
+    ignoreTouch = [value boolValue];
 }
 
 @end
