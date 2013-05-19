@@ -16,7 +16,7 @@
     
 	if( self ) {
         _sprite = [CCSprite spriteWithFile:@"ball0.png"];
-        [_sprite position: ccp(particlePosition.x, particlePosition.y)];
+        _sprite.position = ccp(particlePosition.x, particlePosition.y);
         [self addChild: _sprite];
 	}
 	return self;
@@ -28,18 +28,18 @@
     
 	if( self ) {
         _sprite = [CCSprite spriteWithFile:ballName];
-        [_sprite position: ccp(particlePosition.x, particlePosition.y)];
+        _sprite.position = ccp(particlePosition.x, particlePosition.y);
         [self addChild:_sprite];
 	}
 	return self;
 }
 
 -(void)setPosition:(CGPoint) point {
-    [sprite position: point];
+    [[self sprite] setPosition: point];
 }
 
 -(CGPoint)position {
-    return [sprite position];
+    return [[self sprite] position];
 }
 
 @end

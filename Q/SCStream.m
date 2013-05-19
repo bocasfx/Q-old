@@ -9,16 +9,6 @@
 #import "SCStream.h"
 
 @implementation SCStream
-// @synthesize easing,
-//             headPosition,
-//             particleCount,
-//             streamSize,
-//             pathIndex,
-//             easingFactor,
-//             touchDown,
-//             particleArray,
-//             streamQueue,
-//             path;
 
 -(id) initWithPosition:(CGPoint) position {
     
@@ -26,24 +16,24 @@
     
     if (self) {
 
-        _setParticleCount =  1;
-        _setStreamSize = 100;
-        _setEasing = position;
-        _setHeadPosition = position;
-        _setEasingFactor = 0.08;
-        _setActive = YES;
-        _setTouchDown = NO;
-        _setIgnoreTouch = NO;
+        _particleCount =  1;
+        _streamSize = 100;
+        _easing = position;
+        _headPosition = position;
+        _easingFactor = 0.08;
+        _active = YES;
+        _touchDown = NO;
+        _ignoreTouch = NO;
 
-        particleArray = [[NSMutableArray alloc] init];
-        streamQueue   = [[NSMutableArray alloc] init];
-        path          = [[NSMutableArray alloc] init];
+        _particleArray = [[NSMutableArray alloc] init];
+        _streamQueue   = [[NSMutableArray alloc] init];
+        _path          = [[NSMutableArray alloc] init];
 
-        for (int i=0; i<particleCount; i++) {
+        for (int i=0; i<_particleCount; i++) {
             id ball = [NSString stringWithFormat:@"ball%i.png", i];
             SCParticle *particle = [[SCParticle alloc] initWithPosition: position andBall:ball];
             [self addChild:particle];
-            [particleArray addObject:particle];
+            [_particleArray addObject:particle];
         }
 
         [self scheduleUpdate];
@@ -54,35 +44,35 @@
 
 -(void) update:(ccTime) deltaTime {
     
-    if (!active) {
+    if ( ![self active] ) {
         return;
     }
     
     @try {
         
-        CGPoint pathPoint = headPosition;
+        CGPoint pathPoint = [self headPosition];
         
-        if (touchDown == YES) {
-            pathPoint = headPosition;
-            [path addObject:[NSValue valueWithCGPoint:headPosition]];
+        if ( [self touchDown] == YES ) {
+            pathPoint = [self headPosition];
+            [[self path] addObject:[NSValue valueWithCGPoint:[self headPosition]]];
         } else {
-            if ( [path count] > 0 ) {
-                NSValue *value = [path objectAtIndex: pathIndex];
+            if ( [[self path] count] > 0 ) {
+                NSValue *value = [[self path] objectAtIndex: [self pathIndex]];
                 [value getValue:&pathPoint];
             }
         }
         
-        [self setEasing: [self calculateEasingForPoint:pathPoint withPrevEasing:easing andEasingFactor:easingFactor]];
+        [self setEasing: [self calculateEasingForPoint:pathPoint withPrevEasing:[self easing] andEasingFactor:[self easingFactor]]];
         
-        if ( [streamQueue count] < streamSize ) {
-            [streamQueue insertObject:[NSValue valueWithCGPoint:easing] atIndex:0];
+        if ( [[self streamQueue] count] < [self streamSize] ) {
+            [[self streamQueue] insertObject:[NSValue valueWithCGPoint:[self easing]] atIndex:0];
         } else {
-            [streamQueue insertObject:[NSValue valueWithCGPoint:easing] atIndex:0];
-            [streamQueue removeLastObject];
+            [[self streamQueue] insertObject:[NSValue valueWithCGPoint:[self easing]] atIndex:0];
+            [[self streamQueue] removeLastObject];
         }
 
-        pathIndex++;
-        if ( pathIndex >= [path count] ) {
+        _pathIndex++;
+        if ( [self pathIndex] >= [[self path] count] ) {
             [self setPathIndex: 0];
         }
     } @catch (NSException * exception) {
@@ -94,10 +84,10 @@
     @try {
         int i = 0;
         int j = 0;
-        int step = streamSize / particleCount;
-        while ( i < [streamQueue count] ) {
-            SCParticle *particle = [particleArray objectAtIndex: j];
-            NSValue *value = [streamQueue objectAtIndex: i];
+        int step = [self streamSize] / [self particleCount];
+        while ( i < [[self streamQueue] count] ) {
+            SCParticle *particle = [[self particleArray] objectAtIndex: j];
+            NSValue *value = [[self streamQueue] objectAtIndex: i];
             CGPoint pt;
             [value getValue:&pt];
             [particle setPosition: CGPointMake(pt.x, pt.y)];
@@ -131,10 +121,9 @@
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-    NSLog(@"Touches began with ignore touch: %c", ignoreTouch);
-    if ( ignoreTouch ) return;
+    if ( [self ignoreTouch] ) return;
     [self setTouchDown: YES];
-    [path removeAllObjects];
+    [[self path] removeAllObjects];
     [self setPathIndex: 0];
     UITouch *touch = [touches anyObject];
     [self setHeadPosition: [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]]];

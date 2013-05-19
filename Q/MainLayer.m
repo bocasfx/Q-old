@@ -176,8 +176,8 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     } else if (selectedTool == CREATE_STREAM_BUTTON) {
     
         SCStream *stream = [[SCStream alloc] initWithPosition:position];
-        [stream active:[NSNumber numberWithBool:YES]];
-        [stream ignoreTouch:[NSNumber numberWithBool:NO]];
+        [stream setActiveWithNSNumber:[NSNumber numberWithBool:YES]];
+        [stream setIgnoreTouchWithNSNumber:[NSNumber numberWithBool:NO]];
         [stream ccTouchesBegan:touches withEvent:event];
         [self addChild:stream];
         [streams addObject:stream];

@@ -16,18 +16,18 @@
     
 	if( self ) {
         _sprite = [CCSprite spriteWithFile:@"node.png"];
-        [_sprite position: ccp(pos.x, pos.y)];
+        _sprite.position = ccp(pos.x, pos.y);
         [self addChild:_sprite];
 	}
 	return self;
 }
 
 -(void)setPosition:(CGPoint) point {
-    [sprite position: point];
+    [[self sprite] setPosition: point];
 }
 
 -(CGPoint)position {
-    return [sprite position];
+    return [[self sprite] position];
 }
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
