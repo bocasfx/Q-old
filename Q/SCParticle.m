@@ -22,6 +22,8 @@
 	return self;
 }
 
+// -----------------------------------------------------------------------
+
 -(id) initWithPosition:(CGPoint) particlePosition andBall:(NSString *) ballName {
     
     self = [super init];
@@ -34,9 +36,13 @@
 	return self;
 }
 
+// -----------------------------------------------------------------------
+
 -(void)setPosition:(CGPoint) point {
     [[self sprite] setPosition: point];
 }
+
+// -----------------------------------------------------------------------
 
 -(CGPoint)position {
     return [[self sprite] position];

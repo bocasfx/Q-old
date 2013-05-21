@@ -42,6 +42,8 @@
     return self;
 }
 
+// -----------------------------------------------------------------------
+
 -(void) update:(ccTime) deltaTime {
     
     if ( ![self active] ) {
@@ -80,6 +82,8 @@
     }
 }
 
+// -----------------------------------------------------------------------
+
 -(void) draw {
     @try {
         int i = 0;
@@ -100,6 +104,8 @@
     }
 }
 
+// -----------------------------------------------------------------------
+
 -(CGPoint) calculateEasingForPoint:(CGPoint)point withPrevEasing:(CGPoint)prevEasing andEasingFactor:(float)factor {
     float dx = point.x - prevEasing.x;
     CGPoint newEasing = CGPointMake(prevEasing.x + (dx * factor), prevEasing.y);
@@ -108,17 +114,23 @@
     return CGPointMake(newEasing.x, newEasing.y + (dy * factor));
 }
 
+// -----------------------------------------------------------------------
+
 -(void)onEnter
 {
     [[[CCDirector sharedDirector] touchDispatcher] addStandardDelegate:self priority:0];
 	[super onEnter];
 }
 
+// -----------------------------------------------------------------------
+
 -(void)onExit
 {
     [[[CCDirector sharedDirector] touchDispatcher] removeDelegate:self];
     [super onExit];
 }
+
+// -----------------------------------------------------------------------
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     if ( [self ignoreTouch] ) return;
@@ -129,20 +141,28 @@
     [self setHeadPosition: [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]]];
 }
 
+// -----------------------------------------------------------------------
+
 - (void)ccTouchesMoved:(NSSet *)touches withEvent:(UIEvent *)event {
     //NSLog(@"SCStream: Touches moved.");
     UITouch *touch = [touches anyObject];
     [self setHeadPosition: [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]]];
 }
 
+// -----------------------------------------------------------------------
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     //NSLog(@"SCStream: Touces ended.");
     [self setTouchDown: NO];
 }
 
+// -----------------------------------------------------------------------
+
 -(void) setIgnoreTouchWithNSNumber:(NSNumber *)value {
     [self setIgnoreTouch: [value boolValue]];
 }
+
+// -----------------------------------------------------------------------
 
 -(void) setActiveWithNSNumber:(NSNumber *)value {
     [self setActive: [value boolValue]];

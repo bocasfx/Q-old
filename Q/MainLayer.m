@@ -9,8 +9,6 @@
 #import "MainLayer.h"
 #import "AppDelegate.h"
 
-int RandomNoteNumber() { return rand() / (RAND_MAX / 127); }
-
 #pragma mark - MainLayer
 
 @implementation MainLayer
@@ -30,6 +28,8 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
 	return scene;
 }
 
+// -----------------------------------------------------------------------
+
 -(id) init
 {
 	if( (self=[super init]) ) {
@@ -39,6 +39,7 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
         toolButtons = [NSMutableArray array];
         streams = [NSMutableArray array];
         nodes = [NSMutableArray array];
+        midi = [[SCMidi alloc] init];
         
 //        grid = [CCSprite spriteWithFile:@"grid.png"];
 //        grid.position = ccp(self.boundingBox.size.width / 2.0, self.boundingBox.size.height / 2.0);
@@ -51,19 +52,13 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
 //        http://www.cocos2d-iphone.org/forum/topic/5196/page/3
         
         [self createButtons];
-        
         selectedTool = -1;
-        
-        IF_IOS_HAS_COREMIDI
-        (
-             // We only create a MidiInput object on iOS versions that support CoreMIDI
-             midi = [[PGMidi alloc] init];
-             midi.networkEnabled = YES;
-         )
 	}
 
 	return self;
 }
+
+// -----------------------------------------------------------------------
 
 -(void)createButtons {
     UIButton * button;
@@ -119,9 +114,13 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
 }
 
+// -----------------------------------------------------------------------
+
 -(void) registerWithTouchDispatcher {
 	[[[CCDirector sharedDirector] touchDispatcher] addStandardDelegate:self priority:0];
 }
+
+// -----------------------------------------------------------------------
 
 -(UIButton *)addButtonWithImage:(UIImage *)normalImage
                   selectedImage:(UIImage *)selectedImage
@@ -136,6 +135,8 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     [button setImage:selectedImage forState:UIControlStateSelected];
     return button;
 }
+
+// -----------------------------------------------------------------------
 
 -(IBAction)toolButtonTapped:(id) sender {
     UIButton *button = (UIButton *)sender;
@@ -155,11 +156,15 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     }
 }
 
+// -----------------------------------------------------------------------
+
 -(IBAction)playButtonTapped:(id)sender {
     UIButton *button = (UIButton *)sender;
     button.selected = !button.selected;
     [streams makeObjectsPerformSelector:@selector(setActiveWithNSNumber:) withObject:[NSNumber numberWithBool:button.selected]];
 }
+
+// -----------------------------------------------------------------------
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
     //NSLog(@"Main layer: Touches began.");
@@ -171,6 +176,7 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
         SCNode *node = [[SCNode alloc] initWithPosition:position];
         [self addChild:node];
         [nodes addObject:node];
+        [node showSettingsInLayer:self];
         NSLog(@"Created node");
     
     } else if (selectedTool == CREATE_STREAM_BUTTON) {
@@ -187,139 +193,11 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     }
 }
 
+// -----------------------------------------------------------------------
+
 - (void)ccTouchesEnded:(NSSet *)touches withEvent:(UIEvent *)event {
     NSLog(@"Sending ignore touch");
     [streams makeObjectsPerformSelector:@selector(setIgnoreTouchWithNSNumber:) withObject:[NSNumber numberWithBool:YES]];
-}
-
-#pragma mark - PGMidi
-
-//NSString *ToString(PGMidiConnection *connection)
-//{
-//    return [NSString stringWithFormat:@"< PGMidiConnection: name=%@ isNetwork=%@ >",
-//            connection.name, ToString(connection.isNetworkSession)];
-//}
-
-//- (IBAction) listAllInterfaces
-//{
-//    IF_IOS_HAS_COREMIDI
-//    ({
-//        [self addString:@"\n\nInterface list:"];
-//        for (PGMidiSource *source in midi.sources)
-//        {
-////            NSString *description = [NSString stringWithFormat:@"Source: %@", ToString(source)];
-////            [self addString:description];
-//        }
-//        [self addString:@""];
-//        for (PGMidiDestination *destination in midi.destinations)
-//        {
-////            NSString *description = [NSString stringWithFormat:@"Destination: %@", ToString(destination)];
-////            [self addString:description];
-//        }
-//    })
-//}
-
-//- (IBAction) sendMidiData
-//{
-//    [self performSelectorInBackground:@selector(sendMidiDataInBackground) withObject:nil];
-//}
-
-#pragma mark - Shenanigans
-
-- (void) attachToAllExistingSources
-{
-    for (PGMidiSource *source in midi.sources)
-    {
-        [source addDelegate:self];
-    }
-}
-
-- (void) setMidi:(PGMidi*)m
-{
-    midi.delegate = nil;
-    midi = m;
-    midi.delegate = self;
-    
-    [self attachToAllExistingSources];
-}
-
-- (void) addString:(NSString*)string
-{
-    NSLog(@"addString: %@", string);
-}
-
-- (void) updateCountLabel
-{
-    NSLog(@"sources=%u destinations=%u", midi.sources.count, midi.destinations.count);
-}
-
-- (void) midi:(PGMidi*)midi sourceAdded:(PGMidiSource *)source
-{
-    [source addDelegate:self];
-    [self updateCountLabel];
-//    [self addString:[NSString stringWithFormat:@"Source added: %@", ToString(source)]];
-}
-
-- (void) midi:(PGMidi*)midi sourceRemoved:(PGMidiSource *)source
-{
-    [self updateCountLabel];
-//    [self addString:[NSString stringWithFormat:@"Source removed: %@", ToString(source)]];
-}
-
-- (void) midi:(PGMidi*)midi destinationAdded:(PGMidiDestination *)destination
-{
-    [self updateCountLabel];
-//    [self addString:[NSString stringWithFormat:@"Desintation added: %@", ToString(destination)]];
-}
-
-- (void) midi:(PGMidi*)midi destinationRemoved:(PGMidiDestination *)destination
-{
-    [self updateCountLabel];
-//    [self addString:[NSString stringWithFormat:@"Desintation removed: %@", ToString(destination)]];
-}
-
-NSString *StringFromPacket(const MIDIPacket *packet)
-{
-    // Note - this is not an example of MIDI parsing. I'm just dumping
-    // some bytes for diagnostics.
-    // See comments in PGMidiSourceDelegate for an example of how to
-    // interpret the MIDIPacket structure.
-    return [NSString stringWithFormat:@"  %u bytes: [%02x,%02x,%02x]",
-            packet->length,
-            (packet->length > 0) ? packet->data[0] : 0,
-            (packet->length > 1) ? packet->data[1] : 0,
-            (packet->length > 2) ? packet->data[2] : 0
-            ];
-}
-
-- (void) midiSource:(PGMidiSource*)midi midiReceived:(const MIDIPacketList *)packetList
-{
-    [self performSelectorOnMainThread:@selector(addString:)
-                           withObject:@"MIDI received:"
-                        waitUntilDone:NO];
-    
-    const MIDIPacket *packet = &packetList->packet[0];
-    for (int i = 0; i < packetList->numPackets; ++i)
-    {
-        [self performSelectorOnMainThread:@selector(addString:)
-                               withObject:StringFromPacket(packet)
-                            waitUntilDone:NO];
-        packet = MIDIPacketNext(packet);
-    }
-}
-
-- (void) sendMidiDataInBackground
-{
-    for (int n = 0; n < 20; ++n)
-    {
-        const UInt8 note      = RandomNoteNumber();
-        const UInt8 noteOn[]  = { 0x90, note, 127 };
-        const UInt8 noteOff[] = { 0x80, note, 0   };
-        
-        [midi sendBytes:noteOn size:sizeof(noteOn)];
-        [NSThread sleepForTimeInterval:0.1];
-        [midi sendBytes:noteOff size:sizeof(noteOff)];
-    }
 }
 
 @end

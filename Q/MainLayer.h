@@ -13,22 +13,17 @@
 #import "CCTouchDispatcher.h"
 #import <UIKit/UIKit.h>
 #import "CCUIViewWrapper.h"
-#import "PGMidi.h"
-#import "iOSVersionDetection.h"
-#import "PGArc.h"
-#import <CoreMIDI/CoreMIDI.h>
-
-@class PGMidi;
+#import "SCMidi.h"
 
 // MainLayer.h
-@interface MainLayer : CCLayer <CCStandardTouchDelegate, PGMidiDelegate, PGMidiSourceDelegate>
+@interface MainLayer : CCLayer <CCStandardTouchDelegate>
 {
     NSInteger       selectedTool;
-    PGMidi          *midi;
     NSMutableArray  *toolButtons;
     NSMutableArray  *streams;
     NSMutableArray  *nodes;
     CCSprite        *grid;
+    SCMidi          *midi;
 }
 
 extern NSInteger const CREATE_NODE_BUTTON;
@@ -40,9 +35,5 @@ extern NSInteger const PLAY_PAUSE_BUTTON;
 
 // returns a CCScene that contains the MainLayer as the only child
 +(CCScene *) scene;
-
-- (void) updateCountLabel;
-- (void) addString:(NSString*)string;
-- (void) sendMidiDataInBackground;
 
 @end

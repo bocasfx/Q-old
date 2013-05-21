@@ -14,6 +14,8 @@
 		E936C58B173DAA71003BE428 /* PGMidiAllSources.mm in Sources */ = {isa = PBXBuildFile; fileRef = E936C587173DAA71003BE428 /* PGMidiAllSources.mm */; };
 		E936C58C173DAA71003BE428 /* PGMidiFind.mm in Sources */ = {isa = PBXBuildFile; fileRef = E936C589173DAA71003BE428 /* PGMidiFind.mm */; };
 		E936C58F173DE36C003BE428 /* CoreMIDI.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = E936C58E173DE36C003BE428 /* CoreMIDI.framework */; };
+		E96F485F174A425C00DB8692 /* SCMidi.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F485E174A425C00DB8692 /* SCMidi.m */; };
+		E96F4862174A563800DB8692 /* SCNodeSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E96F4861174A563800DB8692 /* SCNodeSettings.m */; };
 		E9A84303173FDB31002526FC /* node_down.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A84301173FDB31002526FC /* node_down.png */; };
 		E9A84304173FDB31002526FC /* node_up.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A84302173FDB31002526FC /* node_up.png */; };
 		E9A84307173FDC23002526FC /* stream_down.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A84305173FDC23002526FC /* stream_down.png */; };
@@ -177,6 +179,10 @@
 		E936C588173DAA71003BE428 /* PGMidiFind.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PGMidiFind.h; sourceTree = "<group>"; };
 		E936C589173DAA71003BE428 /* PGMidiFind.mm */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.objcpp; path = PGMidiFind.mm; sourceTree = "<group>"; };
 		E936C58E173DE36C003BE428 /* CoreMIDI.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMIDI.framework; path = System/Library/Frameworks/CoreMIDI.framework; sourceTree = SDKROOT; };
+		E96F485D174A425C00DB8692 /* SCMidi.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCMidi.h; sourceTree = "<group>"; };
+		E96F485E174A425C00DB8692 /* SCMidi.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCMidi.m; sourceTree = "<group>"; };
+		E96F4860174A563800DB8692 /* SCNodeSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNodeSettings.h; sourceTree = "<group>"; };
+		E96F4861174A563800DB8692 /* SCNodeSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNodeSettings.m; sourceTree = "<group>"; };
 		E9A84301173FDB31002526FC /* node_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = node_down.png; sourceTree = "<group>"; };
 		E9A84302173FDB31002526FC /* node_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = node_up.png; sourceTree = "<group>"; };
 		E9A84305173FDC23002526FC /* stream_down.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = stream_down.png; sourceTree = "<group>"; };
@@ -556,8 +562,12 @@
 				E9E56C0117331E200004E7A8 /* AppDelegate.m */,
 				E9E56C0617331E200004E7A8 /* IntroLayer.h */,
 				E9E56C0717331E200004E7A8 /* IntroLayer.m */,
+				E96F485D174A425C00DB8692 /* SCMidi.h */,
+				E96F485E174A425C00DB8692 /* SCMidi.m */,
 				E9E56C0317331E200004E7A8 /* MainLayer.h */,
 				E9E56C0417331E200004E7A8 /* MainLayer.m */,
+				E96F4860174A563800DB8692 /* SCNodeSettings.h */,
+				E96F4861174A563800DB8692 /* SCNodeSettings.m */,
 				E9E0B5E31739E18900751902 /* SCNode.h */,
 				E9E0B5E41739E18900751902 /* SCNode.m */,
 				E9297CDF1733317400830D79 /* SCStream.h */,
@@ -1148,6 +1158,8 @@
 				E936C58A173DAA71003BE428 /* PGMidi.mm in Sources */,
 				E936C58B173DAA71003BE428 /* PGMidiAllSources.mm in Sources */,
 				E936C58C173DAA71003BE428 /* PGMidiFind.mm in Sources */,
+				E96F485F174A425C00DB8692 /* SCMidi.m in Sources */,
+				E96F4862174A563800DB8692 /* SCNodeSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
