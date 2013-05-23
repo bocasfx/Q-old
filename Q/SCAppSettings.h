@@ -1,5 +1,5 @@
 //
-//  SCNodeSettings.h
+//  SCAppSettings.h
 //  Q
 //
 //  Created by Bocas on 13-05-22.
@@ -10,7 +10,7 @@
 #import <UIKit/UIKit.h>
 #import "SCSettings.h"
 
-@interface SCNodeSettings : SCSettings {
+@interface SCAppSettings : SCSettings {
 }
 
 -(void) populate;

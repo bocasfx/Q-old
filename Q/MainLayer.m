@@ -13,13 +13,6 @@
 
 @implementation MainLayer
 
-NSInteger const NO_TOOL_SELECTED = -1;
-NSInteger const CREATE_NODE_BUTTON = 0;
-NSInteger const CREATE_STREAM_BUTTON = 1;
-NSInteger const SETTINGS_BUTTON = 2;
-NSInteger const LINK_NODES_BUTTON = 3;
-NSInteger const PLAY_PAUSE_BUTTON = 4;
-
 +(CCScene *) scene
 {
 	CCScene *scene = [CCScene node];
@@ -88,7 +81,7 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
                         selectedImage:[UIImage imageNamed:@"gear_down.png"]
                                   tag:SETTINGS_BUTTON
                                 frame:CGRectMake( 10, 94, 32, 32 )
-                             selector:@"toolButtonTapped:"];
+                             selector:@"settingsButtonTapped:"];
     
     [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
     [toolButtons addObject:button];
@@ -150,10 +143,18 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
         button.selected = YES;
         selectedTool = button.tag;
     }
-    
-    if (selectedTool == SETTINGS_BUTTON) {
-        NSLog(@"Settings");
-        [[SCNodeSettingsViewControllerInterface sharedInstance] sendContactMail];
+}
+
+// -----------------------------------------------------------------------
+
+-(IBAction)settingsButtonTapped:(id) sender {
+    UIButton *button = (UIButton *)sender;
+    if (button.selected) {
+        button.selected = NO;
+        [[SCAppSettings sharedInstance] hideSettings];
+    } else {
+        button.selected = YES;
+        [[SCAppSettings sharedInstance] showSettings];
     }
 }
 

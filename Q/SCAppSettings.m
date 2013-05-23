@@ -1,14 +1,14 @@
 //
-//  SCNodeSettings.m
+//  SCAppSettings.m
 //  Q
 //
 //  Created by Bocas on 13-05-22.
 //
 //
 
-#import "SCNodeSettings.h"
+#import "SCAppSettings.h"
 
-@implementation SCNodeSettings
+@implementation SCAppSettings
 
 -(void) populate {
     [super populate]
