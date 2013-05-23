@@ -26,6 +26,8 @@
 		E9A8431017402DD1002526FC /* link_up.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A8430E17402DD1002526FC /* link_up.png */; };
 		E9A8431317404A40002526FC /* pause.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A8431117404A40002526FC /* pause.png */; };
 		E9A8431417404A40002526FC /* play.png in Resources */ = {isa = PBXBuildFile; fileRef = E9A8431217404A40002526FC /* play.png */; };
+		E9B59A78174EB614003DC76C /* SCAppSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B59A77174EB614003DC76C /* SCAppSettings.m */; };
+		E9B59A7B174EB679003DC76C /* SCSettings.m in Sources */ = {isa = PBXBuildFile; fileRef = E9B59A7A174EB679003DC76C /* SCSettings.m */; };
 		E9DECE5517355CE600F6FF8C /* ball1.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5217355CE600F6FF8C /* ball1.png */; };
 		E9DECE5617355CE600F6FF8C /* ball2.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5317355CE600F6FF8C /* ball2.png */; };
 		E9DECE5717355CE600F6FF8C /* ball3.png in Resources */ = {isa = PBXBuildFile; fileRef = E9DECE5417355CE600F6FF8C /* ball3.png */; };
@@ -161,7 +163,6 @@
 		E9E56C0817331E200004E7A8 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56C0717331E200004E7A8 /* IntroLayer.m */; };
 		E9E56C0F17331E430004E7A8 /* ball0.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E56C0E17331E430004E7A8 /* ball0.png */; };
 		E9F4BC1C173F42DA0038657F /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F4BC1B173F42DA0038657F /* grid.png */; };
-		E9F54CA3174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F54CA2174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -194,6 +195,10 @@
 		E9A8430E17402DD1002526FC /* link_up.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = link_up.png; sourceTree = "<group>"; };
 		E9A8431117404A40002526FC /* pause.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = pause.png; sourceTree = "<group>"; };
 		E9A8431217404A40002526FC /* play.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = play.png; sourceTree = "<group>"; };
+		E9B59A76174EB614003DC76C /* SCAppSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCAppSettings.h; sourceTree = "<group>"; };
+		E9B59A77174EB614003DC76C /* SCAppSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCAppSettings.m; sourceTree = "<group>"; };
+		E9B59A79174EB679003DC76C /* SCSettings.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCSettings.h; sourceTree = "<group>"; };
+		E9B59A7A174EB679003DC76C /* SCSettings.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCSettings.m; sourceTree = "<group>"; };
 		E9DECE5217355CE600F6FF8C /* ball1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball1.png; path = Resources/ball1.png; sourceTree = "<group>"; };
 		E9DECE5317355CE600F6FF8C /* ball2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball2.png; path = Resources/ball2.png; sourceTree = "<group>"; };
 		E9DECE5417355CE600F6FF8C /* ball3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball3.png; path = Resources/ball3.png; sourceTree = "<group>"; };
@@ -466,8 +471,6 @@
 		E9E56C0717331E200004E7A8 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		E9E56C0E17331E430004E7A8 /* ball0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball0.png; path = Resources/ball0.png; sourceTree = "<group>"; };
 		E9F4BC1B173F42DA0038657F /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grid.png; path = Resources/grid.png; sourceTree = "<group>"; };
-		E9F54CA1174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNodeSettingsViewControllerInterface.h; sourceTree = "<group>"; };
-		E9F54CA2174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNodeSettingsViewControllerInterface.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -561,6 +564,10 @@
 		E9E56A8817331E1B0004E7A8 /* Q */ = {
 			isa = PBXGroup;
 			children = (
+				E9B59A79174EB679003DC76C /* SCSettings.h */,
+				E9B59A7A174EB679003DC76C /* SCSettings.m */,
+				E9B59A76174EB614003DC76C /* SCAppSettings.h */,
+				E9B59A77174EB614003DC76C /* SCAppSettings.m */,
 				E9E56C0017331E200004E7A8 /* AppDelegate.h */,
 				E9E56C0117331E200004E7A8 /* AppDelegate.m */,
 				E9E56C0617331E200004E7A8 /* IntroLayer.h */,
@@ -569,16 +576,14 @@
 				E96F485E174A425C00DB8692 /* SCMidi.m */,
 				E9E56C0317331E200004E7A8 /* MainLayer.h */,
 				E9E56C0417331E200004E7A8 /* MainLayer.m */,
-				E96F4860174A563800DB8692 /* SCNodeSettings.h */,
-				E96F4861174A563800DB8692 /* SCNodeSettings.m */,
-				E9F54CA1174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.h */,
-				E9F54CA2174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m */,
 				E9E0B5E31739E18900751902 /* SCNode.h */,
 				E9E0B5E41739E18900751902 /* SCNode.m */,
 				E9297CDF1733317400830D79 /* SCStream.h */,
 				E9297CE01733317400830D79 /* SCStream.m */,
 				E9297CDC17332D6500830D79 /* SCParticle.h */,
 				E9297CDD17332D6500830D79 /* SCParticle.m */,
+				E96F4860174A563800DB8692 /* SCNodeSettings.h */,
+				E96F4861174A563800DB8692 /* SCNodeSettings.m */,
 				E90B3EF6173B026B00CFF4CD /* CCUIViewWrapper.h */,
 				E90B3EF7173B026B00CFF4CD /* CCUIViewWrapper.m */,
 				E936C581173DAA71003BE428 /* PGMidi */,
@@ -1165,7 +1170,8 @@
 				E936C58C173DAA71003BE428 /* PGMidiFind.mm in Sources */,
 				E96F485F174A425C00DB8692 /* SCMidi.m in Sources */,
 				E96F4862174A563800DB8692 /* SCNodeSettings.m in Sources */,
-				E9F54CA3174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m in Sources */,
+				E9B59A78174EB614003DC76C /* SCAppSettings.m in Sources */,
+				E9B59A7B174EB679003DC76C /* SCSettings.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

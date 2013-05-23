@@ -13,6 +13,13 @@
 
 @implementation MainLayer
 
+NSInteger const NO_TOOL_SELECTED        = -1;
+NSInteger const CREATE_NODE_BUTTON      = 0;
+NSInteger const CREATE_STREAM_BUTTON    = 1;
+NSInteger const SETTINGS_BUTTON         = 2;
+NSInteger const LINK_NODES_BUTTON       = 3;
+NSInteger const PLAY_PAUSE_BUTTON       = 4;
+
 +(CCScene *) scene
 {
 	CCScene *scene = [CCScene node];
@@ -148,10 +155,11 @@
 // -----------------------------------------------------------------------
 
 -(IBAction)settingsButtonTapped:(id) sender {
+    NSLog(@"Settings");
     UIButton *button = (UIButton *)sender;
     if (button.selected) {
         button.selected = NO;
-        [[SCAppSettings sharedInstance] hideSettings];
+        [[SCAppSettings sharedInstance] hideSettings: sender];
     } else {
         button.selected = YES;
         [[SCAppSettings sharedInstance] showSettings];
@@ -178,7 +186,6 @@
         SCNode *node = [[SCNode alloc] initWithPosition:position];
         [self addChild:node];
         [nodes addObject:node];
-        [node showSettingsInLayer:self];
         NSLog(@"Created node");
     
     } else if (selectedTool == CREATE_STREAM_BUTTON) {
