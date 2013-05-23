@@ -14,6 +14,7 @@
 #import <UIKit/UIKit.h>
 #import "CCUIViewWrapper.h"
 #import "SCMidi.h"
+#import "SCNodeSettingsViewControllerInterface.h"
 
 // MainLayer.h
 @interface MainLayer : CCLayer <CCStandardTouchDelegate>

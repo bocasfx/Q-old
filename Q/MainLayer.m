@@ -153,6 +153,7 @@ NSInteger const PLAY_PAUSE_BUTTON = 4;
     
     if (selectedTool == SETTINGS_BUTTON) {
         NSLog(@"Settings");
+        [[SCNodeSettingsViewControllerInterface sharedInstance] sendContactMail];
     }
 }
 
