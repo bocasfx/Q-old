@@ -25,7 +25,7 @@ static SCSettings *singletonDelegate = nil;
     @synchronized(self) {
         if (singletonDelegate == nil) {
             singletonDelegate = [super allocWithZone:zone];
-            [self populate]
+            [singletonDelegate populate];
             return singletonDelegate;
         }
     }
@@ -56,12 +56,14 @@ static SCSettings *singletonDelegate = nil;
 // -----------------------------------------------------------------------
 
 -(void) showSettings {
+    NSLog(@"Show Settings");
     [[[CCDirector sharedDirector] view] addSubview:[self settingsView]];
 }
 
 // -----------------------------------------------------------------------
 
 -(IBAction)hideSettings:(id)sender {
+        NSLog(@"Hide Settings");
     [[self settingsView] removeFromSuperview];    
 }
 

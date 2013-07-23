@@ -18,8 +18,6 @@
         _sprite = [CCSprite spriteWithFile:@"node.png"];
         _sprite.position = ccp(pos.x, pos.y);
         [self addChild:_sprite];
-        
-        _settings = [[SCNodeSettings alloc] init];
 	}
 	return self;
 }
@@ -39,12 +37,6 @@
 // -----------------------------------------------------------------------
 
 - (void)ccTouchesBegan:(NSSet *)touches withEvent:(UIEvent *)event {
-}
-
-// -----------------------------------------------------------------------
-
-- (void)showSettingsInLayer: (CCLayer *) layer {
-    [layer addChild: [self settings]];
 }
 
 // -----------------------------------------------------------------------

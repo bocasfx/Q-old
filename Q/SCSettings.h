@@ -18,6 +18,6 @@
 
 -(void) populate;
 -(void) showSettings;
--(void) hideSettings;
+-(IBAction) hideSettings:(id)sender;
 
 @end
