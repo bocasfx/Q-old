@@ -1,0 +1,52 @@
+html, body {
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+	padding: 0;
+	margin: 0;
+	background-color: #000;
+}
+
+#fps {
+	position: absolute;
+	margin: 10px 10px 0 0;
+	right: 0;
+	z-index: 999;
+	color: white;
+}
+
+#toolbar {
+	position: absolute;
+	margin: 10px 0 0 10px;
+	left: 0;
+}
+
+#streamsButton {
+	width: 32px;
+	height: 32px;
+	z-index: 999;
+	cursor: pointer;
+}
+
+.streamsButtonUp {
+	background-image: url("../img/stream_up.png");
+}
+
+.streamsButtonDown {
+	background-image: url("../img/stream_down.png");
+}
+
+#nodesButton {
+	width: 32px;
+	height: 32px;
+	z-index: 999;
+	cursor: pointer;
+}
+
+.nodesButtonUp {
+	background-image: url("../img/node_up.png");
+}
+
+.nodesButtonDown {
+	background-image: url("../img/node_down.png");
+}
