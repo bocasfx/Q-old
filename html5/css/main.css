@@ -17,36 +17,43 @@ html, body {
 
 #toolbar {
 	position: absolute;
-	margin: 10px 0 0 10px;
+	margin-left: 10px;
 	left: 0;
 }
 
-#streamsButton {
+#toolbar ul {
+	list-style-type: none;
+	margin-left: -30px
+}
+
+.toolbarButton {
 	width: 32px;
 	height: 32px;
 	z-index: 999;
 	cursor: pointer;
+	margin-top: 20px;
 }
 
-.streamsButtonUp {
-	background-image: url("../img/stream_up.png");
+.streamButtonUp {
+	background-image: url("../img/toolbar/stream_up.png");
 }
 
-.streamsButtonDown {
-	background-image: url("../img/stream_down.png");
+.streamButtonDown {
+	background-image: url("../img/toolbar/stream_down.png");
 }
 
-#nodesButton {
-	width: 32px;
-	height: 32px;
-	z-index: 999;
-	cursor: pointer;
+.nodeButtonUp {
+	background-image: url("../img/toolbar/node_up.png");
 }
 
-.nodesButtonUp {
-	background-image: url("../img/node_up.png");
+.nodeButtonDown {
+	background-image: url("../img/toolbar/node_down.png");
 }
 
-.nodesButtonDown {
-	background-image: url("../img/node_down.png");
+.gearButtonUp {
+	background-image: url("../img/toolbar/gear_up.png");
+}
+
+.gearButtonDown {
+	background-image: url("../img/toolbar/gear_down.png");
 }
