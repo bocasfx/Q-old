@@ -20,14 +20,14 @@ define("QEnv", ['jquery', 'QNode'], function($, QNode) {
 			borderWidth: 5
 		};
 		myself.startTime = (new Date()).getTime();
+		myself.selectedTool = '';
 
 		// -------------------------------------------------------------------
 	
 		this.mouseDownHandler = function(event) {
-			console.log(event);
-			console.log(myself.context);
-			myself.nodesList.push(new QNode(event.clientX, event.clientY, myself.context));
-			console.log(myself.nodesList.length);
+			if (myself.selectedTool === 'nodeButton') {
+				myself.nodesList.push(new QNode(event.clientX, event.clientY, myself.context));
+			}
 		};
 
 		// -------------------------------------------------------------------
@@ -50,15 +50,29 @@ define("QEnv", ['jquery', 'QNode'], function($, QNode) {
 		};
 
 		// -------------------------------------------------------------------
-
-		this.render = function() {
+		
+		this.calculateFPS = function() {
 			var thisFrameFPS = 1000 / ((now = new Date()) - lastUpdate);
 			myself.fps += (thisFrameFPS - myself.fps) / myself.fpsFilter;
 			if (isNaN(myself.fps)) {
 				myself.fps = 0;
 			}
 			lastUpdate = now;
+		};
 
+		// -------------------------------------------------------------------
+
+		this.render = function() {
+			myself.context.clearRect(0, 0, window.innerWidth, window.innerHeight);
+			myself.calculateFPS();
+			for (node in myself.nodesList) {
+				myself.nodesList[node].render();
+			}
+		};
+
+		// -------------------------------------------------------------------
+		
+		this.calculateRectanglePos = function() {
 			// update
 			var time = (new Date()).getTime() - myself.startTime;
 			var amplitude = 150;
@@ -74,7 +88,9 @@ define("QEnv", ['jquery', 'QNode'], function($, QNode) {
 
 			// draw
 			myself.drawRectangle(myself.myRectangle, myself.context);
-		};
+		}
+
+		// -------------------------------------------------------------------
 
 		this.drawRectangle = function(myRectangle, context) {
 			context.beginPath();
@@ -122,11 +138,19 @@ define("QEnv", ['jquery', 'QNode'], function($, QNode) {
 		this.toolbarHandler = function(event) {
 			selectedTool = $(this)[0].id;
 
-			$('#toolbar li div').each(function(i, val) {
-				$(val).removeClass($(val)[0].id + 'Down');
-			});
+			if (myself.selectedTool === selectedTool) {
+				$('#' + selectedTool).removeClass($('#' + selectedTool)[0].id + 'Down');
+				myself.selectedTool = '';
+			} else {
 
-			$('#' + selectedTool).addClass(selectedTool + 'Down');
+				$('#toolbar li div').each(function(i, val) {
+					$(val).removeClass($(val)[0].id + 'Down');
+				});
+
+				$('#' + selectedTool).addClass(selectedTool + 'Down');
+
+				myself.selectedTool = selectedTool;
+			}
 
 		};
 
