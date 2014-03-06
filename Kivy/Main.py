@@ -6,7 +6,9 @@ from ToolsPanel import ToolsPanel
 # from ControlPanel import ControlPanel
 from kivy.core.window import Window
 from kivy.logger import Logger
-from QSettingsPanel import QSettingsPanel
+# from QSettingsPanel import QSettingsPanel
+from kivy.uix.popup import Popup
+from kivy.uix.label import Label
 
 
 class QApp(App):
@@ -27,7 +29,7 @@ class QApp(App):
         elif keycode[1] == 'k':
             self.medium.clear()
         elif keycode[1] == 'c':
-            self.toggle_panel(self.control_panel)
+            self.show_settings()
         elif keycode[1] == 't':
             self.toggle_panel(self.tools_panel)
         elif keycode[1] == 'p':
@@ -42,32 +44,20 @@ class QApp(App):
             self.main_layout.remove_widget(panel)
             panel.visibility = 'hidden'
 
+    def show_settings(self):
+        self._popup = Popup(title="Settings", content=Label(text='Settings'), size_hint=(0.9, 0.9))
+        self._popup.open()
+
     def build(self):
-        
         self.medium = Medium(do_translation=False)
-
-        # self.control_panel = ControlPanel(medium=self.medium)
-        # self.control_panel.visibility = 'hidder=n'
-
-        self.settings_panel = QSettingsPanel(medium=self.medium)
-        self.settings_panel.visibility = 'visible'
-
         self.tools_panel = ToolsPanel(medium=self.medium)
         self.tools_panel.visibility = 'visible'
-
         self.transport = Transport(medium=self.medium)
         self.transport.visibility = 'visible'
-
-        # self.medium.set_objects(control_panel=self.control_panel, tools_panel=self.tools_panel, transport=self.transport)
-        self.medium.set_objects(settings_panel=self.settings_panel, tools_panel=self.tools_panel, transport=self.transport)
-
         self.main_layout = FloatLayout()
         self.main_layout.add_widget(self.medium, 999)
         self.main_layout.add_widget(self.tools_panel, 0)
-        # self.main_layout.add_widget(self.control_panel, 0)
-        self.main_layout.add_widget(self.settings_panel, 0)
         self.main_layout.add_widget(self.transport, 0)
-
         return self.main_layout
 
 if __name__ == '__main__':
