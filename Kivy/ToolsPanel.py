@@ -16,13 +16,13 @@ class ToolsPanel(StackLayout):
 
         self.btn_create_stream = ToggleButton(
             size_hint=(btn_size, btn_size),
-            text='S',
+            background_normal='images/stream_up.png',
             group='tools',
             state='normal')
 
         self.btn_create_node = ToggleButton(
             size_hint=(btn_size, btn_size),
-            text='N',
+            background_normal='images/node.png',
             group='tools',
             state='normal')
 
