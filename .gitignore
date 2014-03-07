@@ -15,3 +15,4 @@ profile
 DerivedData
 .idea/
 *.hmap
+Kivy/MainSettings.pyc
