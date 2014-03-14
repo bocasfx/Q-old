@@ -3,6 +3,7 @@ from kivy.graphics import Rectangle
 from collections import deque
 from random import randint, random
 from uuid import uuid4
+from kivy.logger import Logger
 
 
 class Node(Scatter):
@@ -30,6 +31,7 @@ class Node(Scatter):
                 size=self.size,
                 source=self.inactive_image,
                 mipmap=True)
+        self.position_changed = False
 
     def note_on(self, velocity):
         self.midi_out.send_message([0x90, self.note, velocity])
@@ -86,6 +88,7 @@ class Node(Scatter):
     # Inbound events -------------------------------------------
 
     def on_touch_down(self, touch):
+        # If touch falls on me, then I'm selected
         if self.collide_point(touch.x, touch.y):
             self.dispatch('on_node_selected')
             self.selected = True
@@ -96,10 +99,15 @@ class Node(Scatter):
         return super(Node, self).on_touch_down(touch)
 
     def on_touch_up(self, touch):
-        if self.collide_point(touch.x, touch.y):
-            self.dispatch('on_node_deselected')
+        self.dispatch('on_node_deselected')
+        self.position_changed = False
         return super(Node, self).on_touch_up(touch)
 
+    def on_touch_move(self, touch):
+        self.position_changed = True
+        return super(Node, self).on_touch_move(touch)
+
+        
     # Outbound events -------------------------------------------
 
     def on_node_selected(self, *args):

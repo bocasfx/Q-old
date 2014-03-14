@@ -8,7 +8,8 @@ from random import randint
 from kivy.graphics import Line, Color
 from kivy.logger import Logger
 from MultiSelectRect import MultiSelectRect
-from MainSettings import MainSettings
+from NodeSettings import NodeSettings
+from Store import Store
 
 class Medium(Widget):
 
@@ -21,13 +22,16 @@ class Medium(Widget):
 
     def __init__(self, **kwargs):
         super(Medium, self).__init__(**kwargs)
+
+        self.store = Store()
+
         self.midi_out = MidiOut()
         self.midi_out.open_port(0)
         self.register_event_type('on_ignore_touch')
         self.register_event_type('on_acknowledge_touch')
         self.register_event_type('on_mouse_state_changed')
 
-        self.main_settings = MainSettings()
+        self.node_settings = NodeSettings()
 
         Clock.schedule_interval(self.calculate_collisions, 0)
         self.size = Window.size
@@ -35,9 +39,18 @@ class Medium(Widget):
         if self.show_grid:
             self.toggle_grid(True)
 
+        self.nodes = self.store.select_nodes(self.midi_out)
+        for elem in self.nodes:
+            self.initialize_node(elem)
+
         Window.bind(on_resize=self.on_window_resize)
 
         self.multi_select_rect = MultiSelectRect()
+
+    def initialize_node(self, node):
+        self.add_widget(node)
+        node.bind(on_node_selected=self.on_node_selected)
+        node.bind(on_node_deselected=self.on_node_deselected)
 
     def calculate_collisions(self, extra):
         for stream in self.streams:
@@ -48,11 +61,10 @@ class Medium(Widget):
     def create_node(self, position):
         node = Node(midi_out=self.midi_out, do_rotation=False, do_scale=False)
         self.nodes.append(node)
-        self.add_widget(node)
-        node.bind(on_node_selected=self.on_node_selected)
-        node.bind(on_node_deselected=self.on_node_deselected)
+        self.initialize_node(node)
         node.pos = (position[0] - 15, position[1] - 15)
-        Logger.debug('Nodes: ' + str(self.nodes))
+        Logger.debug('Node: ' + str(node.id))
+        self.store.insert_node(node)
 
     def create_stream(self, position):
         stream = Stream(color=randint(0, 3))
@@ -89,9 +101,6 @@ class Medium(Widget):
         self.streams = []
         self.selected_nodes = []
 
-    def show_main_settings(self, **kwargs):
-        self.main_settings.show()
-
     # Inbound events -------------------------------------------
 
     def on_window_resize(self, *args):
@@ -125,26 +134,33 @@ class Medium(Widget):
             self.selected_nodes.remove(obj.id)
 
     def on_touch_down(self, touch):
-        if self.selected_tool == 'node':
-            collided = False
+        if touch.is_double_tap:
             for node in self.nodes:
                 if node.collide_point(touch.x, touch.y):
-                    collided = True
-                    break
-            if not collided:
-                self.create_node((touch.x, touch.y))
+                    self.node_settings.show(node.id)
+        else:
+            if self.selected_tool == 'node':
+                collided = False
+                for node in self.nodes:
+                    if node.collide_point(touch.x, touch.y):
+                        collided = True
+                        break
+                if not collided:
+                    self.create_node((touch.x, touch.y))
+            elif self.selected_tool == 'stream':
+                self.create_stream((touch.x, touch.y))
+            elif self.selected_tool == 'multi':
+                self.multi_select_rect.pos = (touch.x, touch.y)
 
-        elif self.selected_tool == 'stream':
-            self.create_stream((touch.x, touch.y))
-        elif self.selected_tool == 'multi':
-            self.multi_select_rect.pos = (touch.x, touch.y)
-
-        for item in self.children:
-            item.on_touch_down(touch)
+            for item in self.children:
+                item.on_touch_down(touch)
 
     def on_touch_up(self, touch):
         for item in self.children:
-            item.on_touch_up(touch)
+            if item.collide_point(touch.x, touch.y):
+                if item.position_changed:
+                    self.store.update_node(item)
+                    item.on_touch_up(touch)
 
         if self.selected_tool == 'stream':
             self.dispatch('on_ignore_touch')
@@ -177,7 +193,8 @@ class Medium(Widget):
         self.dispatch('on_ignore_touch')
 
     def on_btn_settings_released(self, *args):
-        self.main_settings.show()
+    #     self.main_settings.show()
+        pass
 
     def toggle_play_status(self, *args):
         self.play_status = not self.play_status
