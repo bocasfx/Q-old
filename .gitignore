@@ -17,3 +17,4 @@ DerivedData
 *.hmap
 Kivy/MainSettings.pyc
 *.pyc
+*.db

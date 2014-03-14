@@ -2,7 +2,7 @@ from kivy.uix.popup import Popup
 from kivy.uix.label import Label
 from kivy.uix.floatlayout import FloatLayout
 
-class MainSettings():
+class MainSettings(object):
 
 	popup = ''
 	visibility = 'hidden'
@@ -15,7 +15,7 @@ class MainSettings():
 		self.popup = Popup(title='Settings', content=self.layout, size_hint=(0.9, 0.9))
 		self.visibility = 'hidden'
 
-	def show(self):
+	def show(self, *args):
 		self.popup.open()
 		self.visibility = 'visible'
 
