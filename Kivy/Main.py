@@ -3,7 +3,6 @@ from Medium import Medium
 from Transport import Transport
 from kivy.uix.floatlayout import FloatLayout
 from ToolsPanel import ToolsPanel
-from MainSettings import MainSettings
 from kivy.core.window import Window
 from kivy.logger import Logger
 
@@ -28,7 +27,7 @@ class QApp(App):
         elif keycode[1] == 'k':
             self.medium.clear()
         elif keycode[1] == 's':
-            self.mainSettings.toggle()
+            self.medium.show_main_settings()
         elif keycode[1] == 't':
             self.toggle_panel(self.tools_panel)
         elif keycode[1] == 'p':
@@ -44,7 +43,6 @@ class QApp(App):
             panel.visibility = 'hidden'
 
     def build(self):
-        self.mainSettings = MainSettings()
         self.medium = Medium(do_translation=False)
         self.tools_panel = ToolsPanel(medium=self.medium)
         self.tools_panel.visibility = 'visible'

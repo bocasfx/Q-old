@@ -8,6 +8,7 @@ from random import randint
 from kivy.graphics import Line, Color
 from kivy.logger import Logger
 from MultiSelectRect import MultiSelectRect
+from MainSettings import MainSettings
 
 
 class Medium(Widget):
@@ -26,6 +27,8 @@ class Medium(Widget):
         self.register_event_type('on_ignore_touch')
         self.register_event_type('on_acknowledge_touch')
         self.register_event_type('on_mouse_state_changed')
+
+        self.main_settings = MainSettings()
 
         Clock.schedule_interval(self.calculate_collisions, 0)
         self.size = Window.size
@@ -93,6 +96,9 @@ class Medium(Widget):
         self.tools_panel = kwargs.get('tools_panel')
         self.settings_panel = kwargs.get('settings_panel')
         self.transport = kwargs.get('transport')
+
+    def show_main_settings(self, **kwargs):
+        self.main_settings.show()
 
     # Inbound events -------------------------------------------
 
@@ -174,12 +180,22 @@ class Medium(Widget):
             self.selected_tool = 'node'
         self.dispatch('on_ignore_touch')
 
-    def on_btn_multi_select_released(self, *args):
+    def on_btn_create_link_released(self, *args):
         state = args[1].state
         self.selected_tool = None
         if (state == 'down'):
-            self.selected_tool = 'multi'
+            self.selected_tool = 'link'
         self.dispatch('on_ignore_touch')
+
+    def on_btn_settings_released(self, *args):
+        self.main_settings.show()
+
+    # def on_btn_multi_select_released(self, *args):
+    #     state = args[1].state
+    #     self.selected_tool = None
+    #     if (state == 'down'):
+    #         self.selected_tool = 'multi'
+    #     self.dispatch('on_ignore_touch')
 
     def toggle_play_status(self, *args):
         self.play_status = not self.play_status
