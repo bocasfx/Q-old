@@ -137,7 +137,7 @@ class Medium(Widget):
         if touch.is_double_tap:
             for node in self.nodes:
                 if node.collide_point(touch.x, touch.y):
-                    self.node_settings.show(node.id)
+                    self.node_settings.show(node)
         else:
             if self.selected_tool == 'node':
                 collided = False
