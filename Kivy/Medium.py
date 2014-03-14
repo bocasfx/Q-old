@@ -10,7 +10,6 @@ from kivy.logger import Logger
 from MultiSelectRect import MultiSelectRect
 from MainSettings import MainSettings
 
-
 class Medium(Widget):
 
     streams = []
@@ -53,7 +52,6 @@ class Medium(Widget):
         node.bind(on_node_selected=self.on_node_selected)
         node.bind(on_node_deselected=self.on_node_deselected)
         node.pos = (position[0] - 15, position[1] - 15)
-        # self.control_panel.on_node_created(node.id)
         Logger.debug('Nodes: ' + str(self.nodes))
 
     def create_stream(self, position):
@@ -90,12 +88,6 @@ class Medium(Widget):
         self.nodes = []
         self.streams = []
         self.selected_nodes = []
-
-    def set_objects(self, **kwargs):
-        # self.control_panel = kwargs.get('control_panel')
-        self.tools_panel = kwargs.get('tools_panel')
-        self.settings_panel = kwargs.get('settings_panel')
-        self.transport = kwargs.get('transport')
 
     def show_main_settings(self, **kwargs):
         self.main_settings.show()
@@ -163,9 +155,6 @@ class Medium(Widget):
             item.on_touch_move(touch)
         pass
 
-    def on_slider_change(self, *args):
-        Logger.debug("Slider change!")
-
     def on_btn_create_stream_released(self, *args):
         state = args[1].state
         self.selected_tool = None
@@ -189,13 +178,6 @@ class Medium(Widget):
 
     def on_btn_settings_released(self, *args):
         self.main_settings.show()
-
-    # def on_btn_multi_select_released(self, *args):
-    #     state = args[1].state
-    #     self.selected_tool = None
-    #     if (state == 'down'):
-    #         self.selected_tool = 'multi'
-    #     self.dispatch('on_ignore_touch')
 
     def toggle_play_status(self, *args):
         self.play_status = not self.play_status
