@@ -193,7 +193,7 @@ class Medium(Widget):
         self.dispatch('on_ignore_touch')
 
     def on_btn_settings_released(self, *args):
-    #     self.main_settings.show()
+        self.main_settings.show()
         pass
 
     def toggle_play_status(self, *args):

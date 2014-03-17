@@ -11,6 +11,8 @@ class Node(Scatter):
     particle_queue = []
     selected = True
     status = 'inactive'
+    enabled = True
+    velocity = 127
 
     def __init__(self, **kwargs):
         super(Node, self).__init__(**kwargs)
@@ -33,8 +35,18 @@ class Node(Scatter):
                 mipmap=True)
         self.position_changed = False
 
+    def set_velocity(self, velocity):
+        Logger.debug('Setting velocity: ' + str(velocity))
+        self.velocity = velocity
+
+    def set_enabled(self, enabled):
+        self.enabled = enabled
+
+    def set_note(self, note):
+        self.note = note
+
     def note_on(self, velocity):
-        self.midi_out.send_message([0x90, self.note, velocity])
+        self.midi_out.send_message([0x90, self.note, self.velocity])
 
     def note_off(self):
         self.midi_out.send_message([0x80, self.note, 0])
@@ -46,10 +58,10 @@ class Node(Scatter):
             if not in_queue:
                 self.particle_queue.append(particle.id)
                 if len(self.particle_queue) == 1:
-                    if random() >= 0.7:
+                    if random() >= 0.7 and self.enabled:
                         self.status = 'active'
                         self.redraw(self.status)
-                        self.note_on(particle.speed * 127)
+                        self.note_on(particle.speed * self.velocity)
                     else:
                         self.status = 'muted'
                         self.redraw(self.status)
