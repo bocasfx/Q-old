@@ -9,6 +9,7 @@ from kivy.graphics import Line, Color
 from kivy.logger import Logger
 from MultiSelectRect import MultiSelectRect
 from NodeSettings import NodeSettings
+from MainSettings import MainSettings
 from Store import Store
 
 class Medium(Widget):
@@ -32,6 +33,7 @@ class Medium(Widget):
         self.register_event_type('on_mouse_state_changed')
 
         self.node_settings = NodeSettings()
+        self.main_settings = MainSettings()
 
         Clock.schedule_interval(self.calculate_collisions, 0)
         self.size = Window.size
@@ -193,7 +195,7 @@ class Medium(Widget):
         self.dispatch('on_ignore_touch')
 
     def on_btn_settings_released(self, *args):
-        self.main_settings.show()
+        self.main_settings.show(None)
         pass
 
     def toggle_play_status(self, *args):
