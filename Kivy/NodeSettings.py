@@ -1,20 +1,34 @@
-from Settings import Settings
 from kivy.logger import Logger
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
 from kivy.uix.checkbox import CheckBox
 from kivy.uix.slider import Slider
 from functools import partial
+from kivy.uix.popup import Popup
+from kivy.uix.gridlayout import GridLayout
 
-class NodeSettings(Settings):
+class NodeSettings(object):
 
 	col1Width = 0.15
 	col2Width = 1.0 - col1Width
 	rowHeight = 0.1
 	node = ''
+
+	popup = ''
+	layout = GridLayout()
+	title = 'Settings'
 	
 	def __init__(self, **kwargs):
 		super(NodeSettings, self).__init__(**kwargs)
+		self.layout.orientation = 'vertical'
+		self.layout.clear_widgets()
+		self.layout.cols = 2
+		self.layout.padding = [15, 15]
+		self.layout.row_default_height = 30
+		self.layout.row_force_default = True
+		self.layout.spacing = [10, 10]
+		self.popup = Popup(title=self.title, content=self.layout, size_hint=(0.9, 0.9))
+
 
 	def show(self, node):
 		Logger.debug('Displaying settings for node: ' + str(node.id))
@@ -45,7 +59,7 @@ class NodeSettings(Settings):
 		self.add_widget(noteLabel)
 		self.add_widget(noteTextInput)
 
-		return super(NodeSettings, self).show(self)
+		self.popup.open()
 
 	def on_note_change(self, *args):
 		note = args[1].text
@@ -55,3 +69,16 @@ class NodeSettings(Settings):
 	def on_slider_change(self, *args):
 		velocity = args[1]
 		self.node.set_velocity(velocity)
+
+	def dismiss(self, *args):
+		self.popup.dismiss()
+
+	def clear(self, *args):
+		self.layout.clear_widgets()
+
+	def add_widget(self, widget):
+		self.layout.add_widget(widget)
+
+	def set_title(self, title):
+		self.title = title
+		self.popup.title = self.title
