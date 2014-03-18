@@ -25,9 +25,16 @@ class Medium(Widget):
         super(Medium, self).__init__(**kwargs)
 
         self.store = Store()
-
         self.midi_out = MidiOut()
+
+        # available_ports = self.midi_out.get_ports()
+        # if available_ports:
+        #     self.midi_out.open_port(0)
+        # else:
+        #     self.midi_out.open_virtual_port('QMidi')
+
         self.midi_out.open_port(0)
+
         self.register_event_type('on_ignore_touch')
         self.register_event_type('on_acknowledge_touch')
         self.register_event_type('on_mouse_state_changed')

@@ -58,7 +58,9 @@ class MainSettings(object):
 		stream.enable_speed(enabled)
 
 	def on_active_change(self, *args):
-		pass
+		stream = args[0]
+		active = args[2]
+		stream.set_active(active)
 
 	def add_widget(self, widget):
 		self.layout.add_widget(widget)

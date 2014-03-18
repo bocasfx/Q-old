@@ -13,6 +13,8 @@ class Node(Scatter):
     status = 'inactive'
     enabled = True
     velocity = 127
+    channel = 0x0
+    probability = 0.7
 
     def __init__(self, **kwargs):
         super(Node, self).__init__(**kwargs)
@@ -35,6 +37,18 @@ class Node(Scatter):
                 mipmap=True)
         self.position_changed = False
 
+    def set_probability(self, probability):
+        self.probability = probability
+
+    def get_probability(self):
+        return self.probability
+
+    def set_channel(self, channel):
+        self.channel = channel
+
+    def get_channel(self):
+        return self.channel
+
     def set_velocity(self, velocity):
         self.velocity = velocity
 
@@ -45,10 +59,18 @@ class Node(Scatter):
         self.note = note
 
     def note_on(self, velocity):
-        self.midi_out.send_message([0x90, self.note, self.velocity])
+        status = "0x90"
+        status = self.add_hex(status, self.channel)
+        self.midi_out.send_message([status, self.note, self.velocity])
 
     def note_off(self):
-        self.midi_out.send_message([0x80, self.note, 0])
+        status = "0x80"
+        status = self.add_hex(status, self.channel)
+        self.midi_out.send_message([status, self.note, 0])
+
+    def add_hex(self, hex1, hex2):
+        result = int(str(hex1), 16) + int(str(hex2), 16)
+        return result
 
     def handle_collisions(self, particle):
         collided = self.collide_widget(particle)
@@ -57,7 +79,7 @@ class Node(Scatter):
             if not in_queue:
                 self.particle_queue.append(particle.id)
                 if len(self.particle_queue) == 1:
-                    if random() >= 0.7 and self.enabled:
+                    if random() >= self.probability and self.enabled:
                         self.status = 'active'
                         self.redraw(self.status)
                         self.note_on(particle.speed * self.velocity)

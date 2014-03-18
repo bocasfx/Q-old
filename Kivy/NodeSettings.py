@@ -46,12 +46,17 @@ class NodeSettings(object):
 		velocitySlider = Slider(min=0, max=127)
 		velocitySlider.bind(value=self.on_slider_change)
 
-		note = self.node.note
-		Logger.debug('Note: ' + str(note))
-
 		noteLabel = Label(text='Note', size_hint=(self.col1Width, self.rowHeight))
 		noteTextInput = TextInput(text=str(self.node.note), multiline=False, size_hint=(self.col2Width, self.rowHeight))
 		noteTextInput.bind(on_text_validate=partial(self.on_note_change, node))
+
+		channelLabel = Label(text='Midi channel', size_hint=(self.col1Width, self.rowHeight))
+		channelTextInput = TextInput(text=str(self.node.channel), multiline=False, size_hint=(self.col2Width, self.rowHeight))
+		channelTextInput.bind(on_text_validate=partial(self.on_channel_change, node))
+
+		probabilityLabel = Label(text='Probability', size_hint=(self.col1Width, self.rowHeight))
+		probabilityTextInput = TextInput(text=str(self.node.probability), multiline=False, size_hint=(self.col2Width, self.rowHeight))
+		probabilityTextInput.bind(on_text_validate=partial(self.on_probability_change, node))
 
 		self.add_widget(enabledCheckBoxLabel)
 		self.add_widget(enabledCheckBox)
@@ -59,12 +64,15 @@ class NodeSettings(object):
 		self.add_widget(velocitySlider)
 		self.add_widget(noteLabel)
 		self.add_widget(noteTextInput)
+		self.add_widget(channelLabel)
+		self.add_widget(channelTextInput)
+		self.add_widget(probabilityLabel)
+		self.add_widget(probabilityTextInput)
 
 		self.popup.open()
 
 	def on_note_change(self, *args):
 		note = args[1].text
-		Logger.debug('Note: ' + str(note))
 		self.node.set_note(note)
 
 	def on_slider_change(self, *args):
@@ -74,6 +82,14 @@ class NodeSettings(object):
 	def on_enabled_change(self, *args):
 		enabled = args[1]
 		self.node.set_enabled(enabled)
+
+	def on_channel_change(self, *args):
+		channel = args[1].text
+		self.node.set_channel(channel)
+
+	def on_probability_change(self, *args):
+		probability = args[1].text
+		self.node.set_probability(probability)
 
 	def dismiss(self, *args):
 		self.popup.dismiss()
