@@ -7,6 +7,8 @@ from math import hypot
 
 class Particle(Widget):
 
+    enable_speed = True
+
     def __init__(self, **kwargs):
         super(Particle, self).__init__(**kwargs)
         self.size = kwargs.get('size', (10, 10))
@@ -32,19 +34,22 @@ class Particle(Widget):
         self.prev_pos = self.pos
 
     def calculate_speed(self):
-        elapsed_time = time() - self.prev_time
+        if self.enable_speed:
+            elapsed_time = time() - self.prev_time
 
-        dx = self.prev_pos[0] - self.pos[0]
-        dy = self.prev_pos[1] - self.pos[1]
+            dx = self.prev_pos[0] - self.pos[0]
+            dy = self.prev_pos[1] - self.pos[1]
 
-        distance = hypot(dx, dy)
+            distance = hypot(dx, dy)
 
-        self.speed = distance / elapsed_time
-        self.prev_time = time()
+            self.speed = distance / elapsed_time
+            self.prev_time = time()
 
-        # Max speed can be calculated from the particle's history
-        # if self.speed > self.max_speed:
-        #     self.max_speed = self.speed
+            # Max speed can be calculated from the particle's history
+            # if self.speed > self.max_speed:
+            #     self.max_speed = self.speed
+        else:
+            self.speed = 1
 
     def normalize_speed(self):
         self.speed = (self.speed / self.max_speed)

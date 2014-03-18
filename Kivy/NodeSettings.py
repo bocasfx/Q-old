@@ -9,10 +9,10 @@ from kivy.uix.gridlayout import GridLayout
 
 class NodeSettings(object):
 
-	col1Width = 0.15
+	
+	node = col1Width = 0.15
 	col2Width = 1.0 - col1Width
 	rowHeight = 0.1
-	node = ''
 
 	popup = ''
 	layout = GridLayout()
@@ -40,6 +40,7 @@ class NodeSettings(object):
 
 		enabledCheckBoxLabel = Label(text='Enable', size_hint=(self.col1Width, self.rowHeight))
 		enabledCheckBox = CheckBox(active=True)
+		enabledCheckBox.bind(active=self.on_enabled_change)
 
 		velocityLabel = Label(text='Velocity', size_hint=(self.col1Width, self.rowHeight))
 		velocitySlider = Slider(min=0, max=127)
@@ -69,6 +70,10 @@ class NodeSettings(object):
 	def on_slider_change(self, *args):
 		velocity = args[1]
 		self.node.set_velocity(velocity)
+
+	def on_enabled_change(self, *args):
+		enabled = args[1]
+		self.node.set_enabled(enabled)
 
 	def dismiss(self, *args):
 		self.popup.dismiss()

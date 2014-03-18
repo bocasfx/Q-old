@@ -4,7 +4,6 @@ from kivy.clock import Clock
 from Particle import Particle
 from random import randint
 
-
 class Stream(Widget):
 
     color = (1, 1, 1)
@@ -59,6 +58,16 @@ class Stream(Widget):
                 self.children[j].pos = self.queue[i]
                 i += (self.stream_size / self.particle_count)
                 j += 1
+
+    def get_active(self):
+        return self.active
+
+    def set_active(self, active):
+        self.active = active
+
+    def enable_speed(self, enable):
+        for particle in self.children:
+            particle.enable_speed = enable
 
     def advance_path_index(self):
         self.path_index += 1

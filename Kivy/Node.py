@@ -36,7 +36,6 @@ class Node(Scatter):
         self.position_changed = False
 
     def set_velocity(self, velocity):
-        Logger.debug('Setting velocity: ' + str(velocity))
         self.velocity = velocity
 
     def set_enabled(self, enabled):
