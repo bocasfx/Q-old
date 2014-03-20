@@ -3,6 +3,7 @@ from collections import deque
 from kivy.clock import Clock
 from Particle import Particle
 from random import randint
+import thread
 
 class Stream(Widget):
 
@@ -28,6 +29,10 @@ class Stream(Widget):
             part = Particle(color=self.color)
             self.add_widget(part)
 
+        thread.start_new_thread( self.schedule_flow, ())
+        # Clock.schedule_interval(self.flow, 0)
+
+    def schedule_flow(self, *args):
         Clock.schedule_interval(self.flow, 0)
 
     def flow(self, *obj):

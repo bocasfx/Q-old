@@ -11,6 +11,7 @@ from MultiSelectRect import MultiSelectRect
 from NodeSettings import NodeSettings
 from MainSettings import MainSettings
 from Store import Store
+import thread
 
 class Medium(Widget):
 
@@ -42,7 +43,8 @@ class Medium(Widget):
         self.node_settings = NodeSettings()
         self.main_settings = MainSettings()
 
-        Clock.schedule_interval(self.calculate_collisions, 0)
+        thread.start_new_thread(self.schedule_calculate_collisions, ())
+        # Clock.schedule_interval(self.calculate_collisions, 0)
         self.size = Window.size
 
         if self.show_grid:
@@ -55,6 +57,9 @@ class Medium(Widget):
         Window.bind(on_resize=self.on_window_resize)
 
         self.multi_select_rect = MultiSelectRect()
+
+    def schedule_calculate_collisions(self, *args):
+        Clock.schedule_interval(self.calculate_collisions, 0)
 
     def initialize_node(self, node):
         self.add_widget(node)

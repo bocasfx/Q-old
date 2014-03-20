@@ -56,7 +56,7 @@ class Node(Scatter):
         self.enabled = enabled
 
     def set_note(self, note):
-        self.note = note
+        self.note = int(note, 16)
 
     def note_on(self, velocity):
         status = "0x90"
