@@ -29,12 +29,6 @@ class Stream(Widget):
             part = Particle(color=self.color)
             self.add_widget(part)
 
-        thread.start_new_thread( self.schedule_flow, ())
-        # Clock.schedule_interval(self.flow, 0)
-
-    def schedule_flow(self, *args):
-        Clock.schedule_interval(self.flow, 0)
-
     def flow(self, *obj):
         if self.active and not self.head_position == '':
             if self.mouse_state == "up":
@@ -50,10 +44,7 @@ class Stream(Widget):
             if self.easing == '':
                 self.easing = self.head_position
 
-            self.easing = self.calculate_easing(
-                self.head_position,
-                self.easing,
-                0.08)
+            self.easing = self.calculate_easing(self.head_position, self.easing, 0.08)
             self.queue[0] = self.easing
             self.queue.rotate(1)
 

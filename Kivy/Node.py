@@ -1,7 +1,7 @@
 from kivy.uix.scatter import Scatter
 from kivy.graphics import Rectangle
 from collections import deque
-from random import randint, random
+from random import randint
 from uuid import uuid4
 from kivy.logger import Logger
 
@@ -72,14 +72,14 @@ class Node(Scatter):
         result = int(str(hex1), 16) + int(str(hex2), 16)
         return result
 
-    def handle_collisions(self, particle):
+    def handle_collisions(self, particle, probability):
         collided = self.collide_widget(particle)
         in_queue = True if particle.id in self.particle_queue else False
         if collided:
             if not in_queue:
                 self.particle_queue.append(particle.id)
                 if len(self.particle_queue) == 1:
-                    if random() >= self.probability and self.enabled:
+                    if probability >= self.probability and self.enabled:
                         self.status = 'active'
                         self.redraw(self.status)
                         self.note_on(particle.speed * self.velocity)

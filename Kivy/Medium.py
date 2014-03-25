@@ -4,14 +4,14 @@ from kivy.clock import Clock
 from rtmidi_python import MidiOut
 from kivy.core.window import Window
 from kivy.uix.widget import Widget
-from random import randint
 from kivy.graphics import Line, Color
 from kivy.logger import Logger
 from MultiSelectRect import MultiSelectRect
 from NodeSettings import NodeSettings
 from MainSettings import MainSettings
 from Store import Store
-import thread
+from random import random
+import time
 
 class Medium(Widget):
 
@@ -21,6 +21,10 @@ class Medium(Widget):
     selected_tool = ''
     show_grid = True
     play_status = True
+    stream_color = 0
+    fps = 48
+    loop_delta = 1. / fps
+    current_time = target_time = time.clock()
 
     def __init__(self, **kwargs):
         super(Medium, self).__init__(**kwargs)
@@ -43,8 +47,7 @@ class Medium(Widget):
         self.node_settings = NodeSettings()
         self.main_settings = MainSettings()
 
-        thread.start_new_thread(self.schedule_calculate_collisions, ())
-        # Clock.schedule_interval(self.calculate_collisions, 0)
+        Clock.schedule_once(self.animate)
         self.size = Window.size
 
         if self.show_grid:
@@ -58,19 +61,31 @@ class Medium(Widget):
 
         self.multi_select_rect = MultiSelectRect()
 
-    def schedule_calculate_collisions(self, *args):
-        Clock.schedule_interval(self.calculate_collisions, 0)
-
     def initialize_node(self, node):
         self.add_widget(node)
         node.bind(on_node_selected=self.on_node_selected)
         node.bind(on_node_deselected=self.on_node_deselected)
 
-    def calculate_collisions(self, extra):
+    def animate(self, extra):
+        previous_time = self.current_time
+        self.current_time = time.clock()
+        self.time_delta = self.current_time - previous_time
+
+        probability = random()
+
         for stream in self.streams:
+            stream.flow()
             for particle in stream.children:
                 for node in self.nodes:
-                    node.handle_collisions(particle)
+                    node.handle_collisions(particle, probability)
+
+        self.target_time += self.loop_delta
+        sleep_time = self.target_time - time.clock()
+
+        if sleep_time > 0:
+            Clock.schedule_once(self.animate, sleep_time)
+        else:
+            Clock.schedule_once(self.animate)
 
     def create_node(self, position):
         node = Node(midi_out=self.midi_out, do_rotation=False, do_scale=False)
@@ -81,7 +96,10 @@ class Medium(Widget):
         self.store.insert_node(node)
 
     def create_stream(self, position):
-        stream = Stream(color=randint(0, 3))
+        stream = Stream(color=self.stream_color)
+        self.stream_color = self.stream_color + 1
+        if self.stream_color > 3:
+            self.stream_color = 0
         self.streams.append(stream)
         self.add_widget(stream)
         self.bind(on_ignore_touch=stream.on_ignore_touch)
