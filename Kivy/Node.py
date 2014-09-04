@@ -25,7 +25,9 @@ class Node(Scatter):
         self.selected_image = kwargs.get('selected_image', 'images/selected_node.png')
         self.midi_out = kwargs.get('midi_out')
         self.particle_queue = deque()
-        self.note = kwargs.get('note', randint(60, 80))
+        dminor = [50, 52, 53, 55, 57, 59, 60, 62, 64, 65, 67, 69, 71, 72]
+        index = randint(0, 13)
+        self.note = kwargs.get('note', dminor[index])
         self.register_event_type('on_node_selected')
         self.register_event_type('on_node_deselected')
         self.id = str(uuid4())

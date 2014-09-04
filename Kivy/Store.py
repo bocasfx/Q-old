@@ -1,16 +1,16 @@
 import sqlite3
 from Node import Node
 from kivy.logger import Logger
+import os.path
 
 class Store():
 	def __init__(self, **kwargs):
-		self.db = sqlite3.connect('example.db')
+		self.db = sqlite3.connect('q.db')
 		self.cursor = self.db.cursor()
-
 		self.create_db()
 
 	def create_db(self):
-		# self.cursor.execute('''CREATE TABLE nodes (id string primary key, x integer, y integer)''')
+		self.cursor.execute('''CREATE TABLE IF NOT EXISTS nodes (id string primary key, x integer, y integer)''')
 		pass
 
 	def insert_node(self, node):
@@ -21,11 +21,12 @@ class Store():
 
 	def select_nodes(self, midi_out):
 		nodes = []
-		for row in self.cursor.execute("""SELECT * FROM nodes"""):
-			node = Node(midi_out=midi_out, do_rotation=False, do_scale=False)
-			node.pos = (row[1], row[2])
-			node.id = row[0]
-			nodes.append(node)
+		if os.path.isfile('q.db'):
+			for row in self.cursor.execute("""SELECT * FROM nodes"""):
+				node = Node(midi_out=midi_out, do_rotation=False, do_scale=False)
+				node.pos = (row[1], row[2])
+				node.id = row[0]
+				nodes.append(node)
 		return nodes
 
 	def update_node(self, node):

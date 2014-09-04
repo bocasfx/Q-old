@@ -9,7 +9,7 @@ class Stream(Widget):
 
     color = (1, 1, 1)
     queue = []
-    stream_size = 200
+    stream_size = 400
     easing = ''
     particle_count = 5
     mouse_state = "up"
