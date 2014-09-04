@@ -3,6 +3,7 @@ from kivy.graphics import Rectangle
 from uuid import uuid4
 from time import time
 from math import hypot
+from kivy.logger import Logger
 
 
 class Particle(Widget):
@@ -31,7 +32,7 @@ class Particle(Widget):
         self.calculate_speed()
         self.normalize_speed()
         self.rect.pos = self.pos
-        self.prev_pos = self.pos
+        self.prev_pos = self.rect.pos
 
     def calculate_speed(self):
         if self.enable_speed:

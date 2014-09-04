@@ -63,7 +63,7 @@ class Node(Scatter):
     def note_on(self, velocity):
         status = "0x90"
         status = self.add_hex(status, self.channel)
-        self.midi_out.send_message([status, self.note, self.velocity])
+        self.midi_out.send_message([status, self.note, velocity])
 
     def note_off(self):
         status = "0x80"
@@ -84,7 +84,8 @@ class Node(Scatter):
                     if random() >= self.probability and self.enabled:
                         self.status = 'active'
                         self.redraw(self.status)
-                        self.note_on(particle.speed * self.velocity)
+                        self.velocity = particle.speed * self.velocity
+                        self.note_on(self.velocity)
                     else:
                         self.status = 'muted'
                         self.redraw(self.status)
