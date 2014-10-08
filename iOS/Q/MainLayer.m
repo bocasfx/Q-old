@@ -44,7 +44,7 @@
 //        [self addChild:grid];
 //        http://www.cocos2d-iphone.org/forum/topic/5196/page/3
         
-        [self createButtons];
+//        [self createButtons];
         selectedTool = -1;
 	}
 
@@ -53,59 +53,59 @@
 
 // -----------------------------------------------------------------------
 
--(void)createButtons {
-    UIButton * button;
-    
-    // Node
-    button = [self addButtonWithImage:[UIImage imageNamed:@"node_up.png"]
-                        selectedImage:[UIImage imageNamed:@"node_down.png"]
-                                  tag:CREATE_NODE_BUTTON
-                                frame:CGRectMake( 10, 10, 32, 32 )
-                             selector:@"toolButtonTapped:"];
-    
-    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
-    [toolButtons addObject:button];
-    
-    // Stream
-    button = [self addButtonWithImage:[UIImage imageNamed:@"stream_up.png"]
-                        selectedImage:[UIImage imageNamed:@"stream_down.png"]
-                                  tag:CREATE_STREAM_BUTTON
-                                frame:CGRectMake( 10, 52, 32, 32 )
-                             selector:@"toolButtonTapped:"];
-    
-    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
-    [toolButtons addObject:button];
-    
-    // Settings
-    button = [self addButtonWithImage:[UIImage imageNamed:@"gear_up.png"]
-                        selectedImage:[UIImage imageNamed:@"gear_down.png"]
-                                  tag:SETTINGS_BUTTON
-                                frame:CGRectMake( 10, 94, 32, 32 )
-                             selector:@"settingsButtonTapped:"];
-    
-    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
-    [toolButtons addObject:button];
-    
-    // Link Nodes
-    button = [self addButtonWithImage:[UIImage imageNamed:@"link_up.png"]
-                        selectedImage:[UIImage imageNamed:@"link_down.png"]
-                                  tag:LINK_NODES_BUTTON
-                                frame:CGRectMake( 10, 136, 32, 32 )
-                             selector:@"toolButtonTapped:"];
-    
-    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
-    [toolButtons addObject:button];
-    
-    // Play/Pause
-    button = [self addButtonWithImage:[UIImage imageNamed:@"play.png"]
-                        selectedImage:[UIImage imageNamed:@"pause.png"]
-                                  tag:PLAY_PAUSE_BUTTON
-                                frame:CGRectMake( 10, 178, 32, 32 )
-                             selector:@"playButtonTapped:"];
-    
-    button.selected = YES;
-    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
-}
+//-(void)createButtons {
+//    UIButton * button;
+//    
+//    // Node
+//    button = [self addButtonWithImage:[UIImage imageNamed:@"node_up.png"]
+//                        selectedImage:[UIImage imageNamed:@"node_down.png"]
+//                                  tag:CREATE_NODE_BUTTON
+//                                frame:CGRectMake( 10, 10, 32, 32 )
+//                             selector:@"toolButtonTapped:"];
+//    
+//    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+//    [toolButtons addObject:button];
+//    
+//    // Stream
+//    button = [self addButtonWithImage:[UIImage imageNamed:@"stream_up.png"]
+//                        selectedImage:[UIImage imageNamed:@"stream_down.png"]
+//                                  tag:CREATE_STREAM_BUTTON
+//                                frame:CGRectMake( 10, 52, 32, 32 )
+//                             selector:@"toolButtonTapped:"];
+//    
+//    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+//    [toolButtons addObject:button];
+//    
+//    // Settings
+//    button = [self addButtonWithImage:[UIImage imageNamed:@"gear_up.png"]
+//                        selectedImage:[UIImage imageNamed:@"gear_down.png"]
+//                                  tag:SETTINGS_BUTTON
+//                                frame:CGRectMake( 10, 94, 32, 32 )
+//                             selector:@"settingsButtonTapped:"];
+//    
+//    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+//    [toolButtons addObject:button];
+//    
+//    // Link Nodes
+//    button = [self addButtonWithImage:[UIImage imageNamed:@"link_up.png"]
+//                        selectedImage:[UIImage imageNamed:@"link_down.png"]
+//                                  tag:LINK_NODES_BUTTON
+//                                frame:CGRectMake( 10, 136, 32, 32 )
+//                             selector:@"toolButtonTapped:"];
+//    
+//    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+//    [toolButtons addObject:button];
+//    
+//    // Play/Pause
+//    button = [self addButtonWithImage:[UIImage imageNamed:@"play.png"]
+//                        selectedImage:[UIImage imageNamed:@"pause.png"]
+//                                  tag:PLAY_PAUSE_BUTTON
+//                                frame:CGRectMake( 10, 178, 32, 32 )
+//                             selector:@"playButtonTapped:"];
+//    
+//    button.selected = YES;
+//    [self addChild:[CCUIViewWrapper wrapperForUIView:button]];
+//}
 
 // -----------------------------------------------------------------------
 
@@ -135,7 +135,7 @@
     UIButton *button = (UIButton *)sender;
     if (button.selected) {
         button.selected = NO;
-        selectedTool = NO_TOOL_SELECTED;
+//        selectedTool = NO_TOOL_SELECTED;
     } else {
         for (UIButton *btn in toolButtons) {
             btn.selected = NO;
@@ -151,10 +151,10 @@
     UIButton *button = (UIButton *)sender;
     if (button.selected) {
         button.selected = NO;
-        [[SCAppSettings sharedInstance] hideSettings];
+//        [[SCAppSettings sharedInstance] hideSettings];
     } else {
         button.selected = YES;
-        [[SCAppSettings sharedInstance] showSettings];
+//        [[SCAppSettings sharedInstance] showSettings];
     }
 }
 
@@ -173,15 +173,15 @@
     UITouch *touch = [touches anyObject];
     CGPoint position = [[CCDirector sharedDirector] convertToGL: [touch locationInView: [touch view]]];
     
-    if (selectedTool == CREATE_NODE_BUTTON) {
-        
-        SCNode *node = [[SCNode alloc] initWithPosition:position];
-        [self addChild:node];
-        [nodes addObject:node];
-        [node showSettingsInLayer:self];
-        NSLog(@"Created node");
+//    if (selectedTool == CREATE_NODE_BUTTON) {
+//        
+//        SCNode *node = [[SCNode alloc] initWithPosition:position];
+//        [self addChild:node];
+//        [nodes addObject:node];
+//        [node showSettingsInLayer:self];
+//        NSLog(@"Created node");
     
-    } else if (selectedTool == CREATE_STREAM_BUTTON) {
+//    } else if (selectedTool == CREATE_STREAM_BUTTON) {
     
         SCStream *stream = [[SCStream alloc] initWithPosition:position];
         [stream setActiveWithNSNumber:[NSNumber numberWithBool:YES]];
@@ -190,9 +190,9 @@
         [self addChild:stream];
         [streams addObject:stream];
         NSLog(@"Created stream");
-    } else if (selectedTool == LINK_NODES_BUTTON) {
-        NSLog(@"Link nodes");
-    }
+//    } else if (selectedTool == LINK_NODES_BUTTON) {
+//        NSLog(@"Link nodes");
+//    }
 }
 
 // -----------------------------------------------------------------------

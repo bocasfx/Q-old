@@ -161,7 +161,6 @@
 		E9E56C0817331E200004E7A8 /* IntroLayer.m in Sources */ = {isa = PBXBuildFile; fileRef = E9E56C0717331E200004E7A8 /* IntroLayer.m */; };
 		E9E56C0F17331E430004E7A8 /* ball0.png in Resources */ = {isa = PBXBuildFile; fileRef = E9E56C0E17331E430004E7A8 /* ball0.png */; };
 		E9F4BC1C173F42DA0038657F /* grid.png in Resources */ = {isa = PBXBuildFile; fileRef = E9F4BC1B173F42DA0038657F /* grid.png */; };
-		E9F54CA3174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m in Sources */ = {isa = PBXBuildFile; fileRef = E9F54CA2174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -466,8 +465,6 @@
 		E9E56C0717331E200004E7A8 /* IntroLayer.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = IntroLayer.m; sourceTree = "<group>"; };
 		E9E56C0E17331E430004E7A8 /* ball0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = ball0.png; path = Resources/ball0.png; sourceTree = "<group>"; };
 		E9F4BC1B173F42DA0038657F /* grid.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; name = grid.png; path = Resources/grid.png; sourceTree = "<group>"; };
-		E9F54CA1174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SCNodeSettingsViewControllerInterface.h; sourceTree = "<group>"; };
-		E9F54CA2174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SCNodeSettingsViewControllerInterface.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -571,8 +568,6 @@
 				E9E56C0417331E200004E7A8 /* MainLayer.m */,
 				E96F4860174A563800DB8692 /* SCNodeSettings.h */,
 				E96F4861174A563800DB8692 /* SCNodeSettings.m */,
-				E9F54CA1174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.h */,
-				E9F54CA2174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m */,
 				E9E0B5E31739E18900751902 /* SCNode.h */,
 				E9E0B5E41739E18900751902 /* SCNode.m */,
 				E9297CDF1733317400830D79 /* SCStream.h */,
@@ -1165,7 +1160,6 @@
 				E936C58C173DAA71003BE428 /* PGMidiFind.mm in Sources */,
 				E96F485F174A425C00DB8692 /* SCMidi.m in Sources */,
 				E96F4862174A563800DB8692 /* SCNodeSettings.m in Sources */,
-				E9F54CA3174D7937006DAA99 /* SCNodeSettingsViewControllerInterface.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

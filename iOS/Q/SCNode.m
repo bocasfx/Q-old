@@ -19,7 +19,7 @@
         _sprite.position = ccp(pos.x, pos.y);
         [self addChild:_sprite];
         
-        _settings = [[SCNodeSettings alloc] init];
+//        _settings = [[SCNodeSettings alloc] init];
 	}
 	return self;
 }
@@ -44,7 +44,7 @@
 // -----------------------------------------------------------------------
 
 - (void)showSettingsInLayer: (CCLayer *) layer {
-    [layer addChild: [self settings]];
+//    [layer addChild: [self settings]];
 }
 
 // -----------------------------------------------------------------------

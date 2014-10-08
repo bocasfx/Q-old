@@ -11,7 +11,7 @@ class Stream(Widget):
     queue = []
     stream_size = 400
     easing = ''
-    particle_count = 5
+    particle_count = 10
     mouse_state = "up"
     head_position = ''
     path_index = 0

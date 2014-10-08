@@ -14,7 +14,7 @@ class Node(Scatter):
     enabled = True
     velocity = 127
     channel = 0x0
-    probability = 0.7
+    probability = 0
 
     def __init__(self, **kwargs):
         super(Node, self).__init__(**kwargs)
@@ -84,8 +84,8 @@ class Node(Scatter):
                     if random() >= self.probability and self.enabled:
                         self.status = 'active'
                         self.redraw(self.status)
-                        self.velocity = particle.speed * self.velocity
-                        self.note_on(self.velocity)
+                        velocity = particle.speed * self.velocity
+                        self.note_on(velocity)
                     else:
                         self.status = 'muted'
                         self.redraw(self.status)
@@ -95,7 +95,7 @@ class Node(Scatter):
                 if len(self.particle_queue) == 0:
                     self.status = 'inactive'
                     self.redraw(self.status)
-                self.note_off()
+                # self.note_off()
 
     def redraw(self, status):
         self.canvas.clear()

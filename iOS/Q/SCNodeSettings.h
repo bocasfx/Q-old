@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 #import <UIKit/UIKit.h>
-#import "SCSettings.h"
+//#import "SCSettings.h"
 
-@interface SCNodeSettings : SCSettings {
+@interface SCNodeSettings {
 }
 
 -(void) populate;
