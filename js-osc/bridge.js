@@ -1,5 +1,6 @@
 var osc = require('node-osc'),
-    io = require('socket.io').listen(8082);
+    io = require('socket.io').listen(8082),
+    midi = require('midi');
 
 var oscServer, oscClient;
 
@@ -19,7 +20,13 @@ io.sockets.on('connection', function (socket) {
     console.log("osc message");
     oscClient.send(obj);
   });
-  socket.on("midi", function () {
+  socket.on("midi", function (obj) {
     console.log("midi message");
+    var output = new midi.output();
+    output.getPortCount();
+    output.getPortName(0);
+    output.openPort(0);
+    output.sendMessage(obj.args);
+    output.closePort();
   });
 });

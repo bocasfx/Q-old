@@ -1,6 +1,7 @@
 $( document ).ready(function() {
 
-    var game = new Phaser.Game($(window).width(), $(window).height(), Phaser.AUTO, '', { preload: preload, create: create, update: update });
+    // var game = new Phaser.Game($(window).width(), $(window).height(), Phaser.AUTO, '', { preload: preload, create: create, update: update });
+    var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
 
     $(window).resize(function() { resizeGame(); } );
 
@@ -81,7 +82,7 @@ $( document ).ready(function() {
             if ( ! collided ) {
                 node.active = false;
             }
-        };
+        }
         
     }
 
@@ -95,7 +96,7 @@ $( document ).ready(function() {
 
             socket.emit('midi', {
                 address: "/carrier/freq",
-                args: [440.4, 440.2]
+                args: [176,22,1]
             });
 
             node.active = true;
