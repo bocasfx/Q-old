@@ -1,4 +1,23 @@
-window.onload = function() {
+$( document ).ready(function() {
+
+    var game = new Phaser.Game($(window).width(), $(window).height(), Phaser.AUTO, '', { preload: preload, create: create, update: update });
+
+    $(window).resize(function() { resizeGame(); } );
+
+    function resizeGame() {
+        var height = $(window).height();
+        var width = $(window).width();
+            
+        game.width = width;
+        game.height = height;
+        game.stage.width = width;
+        game.stage.height = height;
+            
+        if (game.renderType === Phaser.WEBGL)
+        {
+            game.renderer.resize(width, height);
+        }
+    }
 
     socket = io.connect('http://127.0.0.1', { port: 8082, rememberTransport: false});
     socket.on('connect', function() {
@@ -18,7 +37,7 @@ window.onload = function() {
         );
     });
 
-    var game = new Phaser.Game(800, 600, Phaser.AUTO, '', { preload: preload, create: create, update: update });
+    
     var prtcl;
 
     function preload() {
@@ -82,7 +101,7 @@ window.onload = function() {
             node.active = true;
         }
     }
-};
+});
 
 
 // "/carrier/freq" ",f" 440.4  
