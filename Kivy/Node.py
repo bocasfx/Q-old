@@ -14,7 +14,7 @@ class Node(Scatter):
     enabled = True
     velocity = 127
     channel = 0x0
-    probability = 0
+    probability = 0.7
 
     def __init__(self, **kwargs):
         super(Node, self).__init__(**kwargs)

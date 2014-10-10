@@ -25,7 +25,7 @@ class Medium(Widget):
     def __init__(self, **kwargs):
         super(Medium, self).__init__(**kwargs)
 
-        self.store = Store()
+        # self.store = Store()
         self.midi_out = MidiOut()
 
         # available_ports = self.midi_out.get_ports()
@@ -50,7 +50,7 @@ class Medium(Widget):
         if self.show_grid:
             self.toggle_grid(True)
 
-        self.nodes = self.store.select_nodes(self.midi_out)
+        # self.nodes = self.store.select_nodes(self.midi_out)
         for elem in self.nodes:
             self.initialize_node(elem)
 
@@ -78,7 +78,7 @@ class Medium(Widget):
         self.initialize_node(node)
         node.pos = (position[0] - 15, position[1] - 15)
         Logger.debug('Node: ' + str(node.id))
-        self.store.insert_node(node)
+        # self.store.insert_node(node)
 
     def create_stream(self, position):
         stream = Stream(color=randint(0, 3))
@@ -173,7 +173,7 @@ class Medium(Widget):
         for item in self.children:
             if item.collide_point(touch.x, touch.y):
                 if item.position_changed:
-                    self.store.update_node(item)
+                    # self.store.update_node(item)
                     item.on_touch_up(touch)
 
         if self.selected_tool == 'stream':
