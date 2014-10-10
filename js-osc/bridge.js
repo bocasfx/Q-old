@@ -1,5 +1,5 @@
 var osc = require('node-osc'),
-    io = require('socket.io').listen(8081);
+    io = require('socket.io').listen(8082);
 
 var oscServer, oscClient;
 
@@ -15,7 +15,11 @@ io.sockets.on('connection', function (socket) {
       socket.emit("message", msg);
     });
   });
-  socket.on("message", function (obj) {
+  socket.on("osc", function (obj) {
+    console.log("osc message");
     oscClient.send(obj);
+  });
+  socket.on("midi", function () {
+    console.log("midi message");
   });
 });
